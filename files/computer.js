@@ -5,9 +5,12 @@
 
 var location=require("./location");
 var server=require("./server");
+var utils=require("./utils");
 var Route_class=require("./route_class");
 var _routes=[];
 
+var start=0;
+var end=0;
 module.exports=(function(){
 
     var createRoutesFromPlain=function(ps){
@@ -19,44 +22,55 @@ module.exports=(function(){
     }
 
     var parseResult=function(result){
-        var response=[];
-        for(var i=0;i<result.length;i++){
-
-        }
+        var output=[];
 
         for(var i=0;i<result.length;i++){
 
+            var item_raw=result[i];
+            var item={"locations":{},"vehicles":{}};
+
+            if(item_raw.type=="single"){
+                console.log("single found");
+                var places=item_raw.routes[0].getPlacesInBetween(start,end);
+                console.log(places);
+                item.locations=utils.formatLocationsFromIDs(places);
+
+                output.push(item);
+            }
         }
 
-        for(var i=0;i<result.length;i++){
+        return output;
 
-        }
     }
 
     var calibrate=function(from,to){
         console.log("calibrating");
 
-        var start=location.getNearestLocationFrom(from).ID;
-        var end=location.getNearestLocationFrom(to).ID;
+        start=location.getNearestLocationFrom(from).ID;
+        end=location.getNearestLocationFrom(to).ID;
         delete from,to;
 
         if(! (start && end)) return {};
 
-        var results={
-            "s":[],
-            "d":[],
-            "t":[]
-        };
+        var results=[];
         if(start!=end){
-            for (var i=0;i<_routes.length;i++){
-                console.log(_routes[i]);
-                console.log("working");
-                if(_routes[i].goesThroughLocations(start,end)){
 
-                    results.s.push(_routes[i]);
+            //single route checking
+            var singles=[];
+            for (var i=0;i<_routes.length;i++){
+                if(_routes[i].goesThroughLocations(start,end)){
+                    singles.push(_routes[i]);
+
+                    console.log(start,end);
+                    console.log(_routes[i].getPlacesInBetween(start,end),"end");
+
                 }else{
-//                    console.log("not found");
                 }
+            }
+            if(singles){
+                results.push({type:"single",routes:singles});
+            }else{
+                //double route checking
             }
         }else{
             //start and end places are the same. The user has to walk. Sorry user, the destination is nearby!

@@ -8,7 +8,11 @@ module.exports=(function(){
             locations=all;
         },
         getById:function(id){
-
+            for(var i=0;i<locations.length;i++){
+                if(locations[i].ID==id){
+                    return locations[i];
+                }
+            }
         },
         getNearestLocationFrom:function(lat,lng){
             if(lat instanceof Object){
