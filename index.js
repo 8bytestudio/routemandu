@@ -1,3 +1,3 @@
-var loader=require("files/loader");
+var loader=require("./files/loader");
 
 loader.serve();

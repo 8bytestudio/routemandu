@@ -1,8 +1,8 @@
 var Q=require("q");
-var _=require("_");
+var _=require("underscore");
 
-var fetcher=require("fetchRoutes");
-var computer=require("computer");
+var fetcher=require("./fetchRoutes");
+var computer=require("./computer");
 
 
 module.exports=(function(){
