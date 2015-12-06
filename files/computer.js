@@ -3,7 +3,7 @@
  */
 
 var location=require("./location");
-
+var server=require("./server");
 module.exports=(function(){
     var Route_class=require("./route_class");
 
@@ -16,15 +16,21 @@ module.exports=(function(){
             _routes.push(new Route_class(ps[i]));
         }
 
-        console.log("routes created");
+    }
+
+    var calibrate=function(from,to){
+        console.log("calibrating");
+
+        return {"HI":"HELLO"};
     }
     return {
         init:function(plainRoutes){
             createRoutesFromPlain(plainRoutes);
+            server.init();
+            console.log("init done");
         },
-        work:function(){
-            console.log("working");
-
+        getResultJson:function(from,to){
+            return calibrate(from,to);
         }
     }
 })();
