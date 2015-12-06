@@ -1,6 +1,9 @@
 /**
  * Created by damo on 12/3/15.
  */
+
+var location=require("./location");
+
 module.exports=(function(){
     var Route_class=require("./route_class");
 
@@ -13,10 +16,15 @@ module.exports=(function(){
             _routes.push(new Route_class(ps[i]));
         }
 
+        console.log("routes created");
     }
     return {
         init:function(plainRoutes){
             createRoutesFromPlain(plainRoutes);
+        },
+        work:function(){
+            console.log("working");
+
         }
     }
 })();

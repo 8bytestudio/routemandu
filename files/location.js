@@ -9,6 +9,24 @@ module.exports=(function(){
         },
         getById:function(id){
 
+        },
+        getNearestFrom:function(lat,lng){
+            var shortestDistance=10000000;
+            var shortestLocation=null;
+
+            for(var i=0;i<locations.length;i++){
+                var xDiff=Math.abs(locations[i].latitude-lat);
+                var yDiff=Math.abs(locations[i].longitude-lng);
+
+                var distance=xDiff*xDiff + yDiff*yDiff;
+
+                if(distance<shortestDistance){
+                    shortestDistance=distance;
+                    shortestLocation=locations[i];
+                }
+            }
+
+            return shortestLocation;
         }
     }
 })();

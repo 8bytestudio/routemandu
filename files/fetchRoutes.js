@@ -62,9 +62,7 @@ module.exports=(function(){
     return {
         fetch:function(){
             return Q.Promise(function(resolve){
-                console.log("begin fetch");
                 fetchRoutes().then(function(raw){
-                    console.log("fetched raw data");
 
                     location.init(raw.locations);
 
