@@ -24,10 +24,14 @@ module.exports=(function(){
         serve:function(){
             console.log("initializing");
             initialize().then(function(){
+                console.log("init done");
 
+                computer.calibrate(
+                    {lat:27.6317558289,lng:85.3175048828},
+                    {lat:27.6451377869,lng:85.3193969727});
 
-                computer.work();
-            })
+            });
+
 
         }
     }

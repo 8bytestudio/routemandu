@@ -70,18 +70,19 @@ module.exports=(function(){
                     var routes=[];
 
                     for(var i=0;i<raw.routes.length;i++){
+                        if(i!=2)continue;
                         var route=raw.routes[i];
                         route.locations=new Array(config.routemaxlength);//max size
                         for(var j=0;j<raw.route_locations.length;j++){
                             if(raw.route_locations[j].routeID==route.ID){
                                 route.locations[raw.route_locations[j].orderID-1]=raw.route_locations[j].locationID;
+
                             }
                         }
 
                         route.locations=route.locations.filter(function(n){return n;});
 
                     }
-
                     routes.push(route);
 
                     resolve(routes);

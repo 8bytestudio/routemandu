@@ -3,7 +3,7 @@
  */
 var express=require("express");
 var app=express();
-
+var config=require("../config");
 module.exports=(function(){
     var run=function(){
         var computer=require("./computer");
@@ -12,23 +12,23 @@ module.exports=(function(){
 //            res.send('Hello World!');
 
             var start={
-                from:parseFloat(req.query.fromLat),
-                to:parseFloat(req.query.fromLng)
+                lat:parseFloat(req.query.fromLat),
+                lng:parseFloat(req.query.fromLng)
             };
             var end={
-                from:parseFloat(req.query.toLat),
-                to:parseFloat(req.query.toLng)
+                lat:parseFloat(req.query.toLat),
+                lng:parseFloat(req.query.toLng)
             };
 
             var result=computer.getResultJson(start,end);
             res.send(result);
         });
 
-        var server = app.listen(3000, function () {
+        var server = app.listen(config.port, function () {
             var host = server.address().address;
             var port = server.address().port;
 
-            console.log('Example app listening at http://%s:%s', host, port);
+            console.log('Routemandu running at http://%s:%s', host, port);
 
         });
     }

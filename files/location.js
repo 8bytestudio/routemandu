@@ -10,17 +10,23 @@ module.exports=(function(){
         getById:function(id){
 
         },
-        getNearestFrom:function(lat,lng){
+        getNearestLocationFrom:function(lat,lng){
+            if(lat instanceof Object){
+                lng=lat.lng;
+                lat=lat.lat;
+            }
+
             var shortestDistance=10000000;
-            var shortestLocation=null;
+            var shortestLocation=0;
 
             for(var i=0;i<locations.length;i++){
                 var xDiff=Math.abs(locations[i].latitude-lat);
                 var yDiff=Math.abs(locations[i].longitude-lng);
-
+//                console.log(locations[i].latitude,lat);
+//                console.log(locations[i].longitude,lng);
                 var distance=xDiff*xDiff + yDiff*yDiff;
-
-                if(distance<shortestDistance){
+//                console.log(locations[i].name,xDiff,yDiff);
+                if(distance <= shortestDistance){
                     shortestDistance=distance;
                     shortestLocation=locations[i];
                 }

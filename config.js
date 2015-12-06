@@ -15,7 +15,7 @@ module.exports={
     //to convert latitude and longitude to kilometers
     coordToKmFactor:5,
 
-    routemaxlength:100,
+    routemaxlength:1000,
 
     //id from mysql vehicleTypes table
     ID_SMALL_MICRO:1,
@@ -23,5 +23,5 @@ module.exports={
     ID_TEMPO:4,
     ID_BIG_MICRO:5,
 
-
+    port:10001,
 }
