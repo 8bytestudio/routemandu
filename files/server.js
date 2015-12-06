@@ -20,7 +20,14 @@ module.exports=(function(){
                 lng:parseFloat(req.query.toLng)
             };
 
+            var begin=new Date();
             var result=computer.getResultJson(start,end);
+            var end=new Date();
+
+//            res.send({
+//                elapsed:end-begin,
+//                result:result
+//            });
             res.send(result);
         });
 

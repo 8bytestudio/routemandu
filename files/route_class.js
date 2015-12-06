@@ -6,12 +6,15 @@ var utils=require("./utils");
 var Route_Class=function(route){
     this.locations=route.locations;
     this.id=route.ID;
+    this.vehicles=route.vehicles;
+    console.log(route.vehicles,"vs");
 
 //    console.log("this is created");
 //    console.log(this);
 }
 
 Route_Class.prototype.locations=[];
+Route_Class.prototype.vehicles=[];
 Route_Class.prototype.id=0;
 Route_Class.prototype.goesThroughLocation=function(object){
     if(! object)return;

@@ -11,6 +11,7 @@ var _routes=[];
 
 var start=0;
 var end=0;
+
 module.exports=(function(){
 
     var createRoutesFromPlain=function(ps){
@@ -27,13 +28,20 @@ module.exports=(function(){
         for(var i=0;i<result.length;i++){
 
             var item_raw=result[i];
-            var item={"locations":{},"vehicles":{}};
+            var item={"locations":[],"vehicles":[]};
 
             if(item_raw.type=="single"){
                 console.log("single found");
                 var places=item_raw.routes[0].getPlacesInBetween(start,end);
                 console.log(places);
                 item.locations=utils.formatLocationsFromIDs(places);
+                console.log(item_raw);
+                console.log("end");
+
+                for(var i=0;i<item_raw.routes.length;i++){
+                    var route=item_raw.routes[i];
+                    item.vehicles=item.vehicles.concat(route.vehicles);
+                }
 
                 output.push(item);
             }
