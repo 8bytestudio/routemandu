@@ -7,6 +7,8 @@ var location=require("./location");
 var server=require("./server");
 var utils=require("./utils");
 var Route_class=require("./route_class");
+var _=require("underscore");
+
 var _routes=[];
 
 var start=0;
@@ -20,30 +22,55 @@ module.exports=(function(){
         }
     }
 
+    var getParsingChainItem=function(routes,from,to){
+        if(! from) from=start;
+        if(! to)to=end;
+
+        var item={"locations":[],"vehicles":[]};
+
+        var places=routes[0].getPlacesInBetween(from,to);
+        item.locations=utils.formatLocationsFromIDs(places);
+
+        item.start=location.getById(from);
+        item.end=location.getById(to);
+
+        for(var i=0;i<routes.length;i++){
+            var route=routes[i];
+            item.vehicles=item.vehicles.concat(route.vehicles);
+        }
+
+        return item;
+    }
     var parseResult=function(result){
         var output=[];
 
         for(var i=0;i<result.length;i++){
 
             var item_raw=result[i];
-            var item={"locations":[],"vehicles":[]};
+
+            var chain=[];
 
             if(item_raw.type=="single"){
                 console.log("single found");
-                var places=item_raw.routes[0].getPlacesInBetween(start,end);
-                item.locations=utils.formatLocationsFromIDs(places);
 
-                item.start=start;
-                item.end=end;
+                chain.push(getParsingChainItem(item_raw.routes))
 
-                console.log("end");
+                output.push(chain);
+            }else if(item_raw.type=="double"){
+                console.log("double found");
 
-                for(var i=0;i<item_raw.routes.length;i++){
-                    var route=item_raw.routes[i];
-                    item.vehicles=item.vehicles.concat(route.vehicles);
-                }
+                chain.push(getParsingChainItem(
+                    item_raw.first,
+                    start,
+                    item_raw.firstInterval));
 
-                output.push(item);
+                chain.push(getParsingChainItem(
+                    item_raw.second,
+                    item_raw.firstInterval,
+                    end));
+
+                output.push(chain);
+
             }
         }
 
@@ -55,7 +82,6 @@ module.exports=(function(){
         console.log("calibrating");
 
         start=location.getNearestLocationFrom(from).ID;
-        console.log(to);
         end=location.getNearestLocationFrom(to).ID;
         delete from,to;
 
@@ -68,15 +94,46 @@ module.exports=(function(){
             var singles=[];
             for (var i=0;i<_routes.length;i++){
                 if(_routes[i].goesThroughLocations(start,end)){
+                    console.log("route found");
                     singles.push(_routes[i]);
-
-                }else{
                 }
             }
-            if(singles){
+
+            if(singles.length>0){
                 results.push({type:"single",routes:singles});
             }else{
                 //double route checking
+
+                var doubles=[];
+                var triples=[];
+
+                var aLocations=utils.getPointsThatGoFrom(start);
+                var bLocations=utils.getPointsThatGoFrom(end);
+
+                var intersects=_.intersection(aLocations,bLocations);
+
+                if(intersects.length>0){
+
+                    var aRoutes=utils.getRoutesThatPassThroughPoints(start,intersects[0]);
+                    var bRoutes=utils.getRoutesThatPassThroughPoints(end,intersects[0]);
+
+
+                    var route=({
+                        type:"double",
+                        first:aRoutes,
+                        firstInterval:intersects[0],
+                        second:bRoutes
+                    });
+
+                    doubles.push(route);
+                    results.push(route);
+
+                    console.log("DONE");
+
+                }
+
+                results.push(doubles);
+
             }
         }else{
             //start and end places are the same. The user has to walk. Sorry user, the destination is nearby!
@@ -94,6 +151,7 @@ module.exports=(function(){
         },
         getResultJson:function(from,to){
             return calibrate(from,to);
-        }
+        },
+        routes:_routes
     }
 })();

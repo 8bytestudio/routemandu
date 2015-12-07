@@ -12,13 +12,7 @@ var Route_Class=function(route){
 Route_Class.prototype.locations=[];
 Route_Class.prototype.vehicles=[];
 Route_Class.prototype.id=0;
-Route_Class.prototype.goesThroughLocation=function(object){
-    if(! object)return;
 
-    if(! object.id)object=location.getById(id);
-
-    return this.locations.indexOf(object) >= 0;
-}
 
 Route_Class.prototype.goesThroughLocations=function(){
     //convert all locations to IDs

@@ -3,6 +3,7 @@
  */
 
 var location=require("./location");
+var _=require("underscore");
 
 module.exports.distanceBetween=function(a,b){
     if(! (a instanceof Object)) a=location.getById(a);
@@ -22,5 +23,37 @@ module.exports.formatLocationsFromIDs=function(array){
 
         result.push(array[i]);
     }
+    return result;
+}
+
+module.exports.getPointsThatGoFrom=function(location){
+    var computer=require("./computer");
+
+    if(location instanceof Object)location=location.id;
+
+    var result=[];
+
+    for(var i=0;i<computer.routes.length;i++){
+
+        if(computer.routes[i].goesThroughLocations(location)){
+            result= _.union(result,computer.routes[i].locations);
+        }
+
+    }
+
+    return result;
+}
+
+module.exports.getRoutesThatPassThroughPoints=function(){
+    var computer=require("./computer");
+
+    var result=[];
+    for(var i=0;i<computer.routes.length;i++){
+
+        if(computer.routes[i].goesThroughLocations.apply(computer.routes[i],arguments)){
+            result.push(computer.routes[i]);
+        }
+    }
+
     return result;
 }

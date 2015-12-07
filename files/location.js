@@ -6,6 +6,10 @@ module.exports=(function(){
     return {
         init:function(all){
             locations=all;
+
+            locations.forEach(function(location){
+                location.url="https://www.google.com.np/maps/@"+location.latitude+","+location.longitude+",21z";
+            })
         },
         getById:function(id){
             for(var i=0;i<locations.length;i++){
