@@ -7,10 +7,6 @@ var Route_Class=function(route){
     this.locations=route.locations;
     this.id=route.ID;
     this.vehicles=route.vehicles;
-    console.log(route.vehicles,"vs");
-
-//    console.log("this is created");
-//    console.log(this);
 }
 
 Route_Class.prototype.locations=[];

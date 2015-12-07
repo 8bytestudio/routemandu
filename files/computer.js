@@ -15,8 +15,6 @@ var end=0;
 module.exports=(function(){
 
     var createRoutesFromPlain=function(ps){
-        console.log("creating routes");
-
         for(var i=0;i<ps.length;i++){
             _routes.push(new Route_class(ps[i]));
         }
@@ -33,9 +31,11 @@ module.exports=(function(){
             if(item_raw.type=="single"){
                 console.log("single found");
                 var places=item_raw.routes[0].getPlacesInBetween(start,end);
-                console.log(places);
                 item.locations=utils.formatLocationsFromIDs(places);
-                console.log(item_raw);
+
+                item.start=start;
+                item.end=end;
+
                 console.log("end");
 
                 for(var i=0;i<item_raw.routes.length;i++){
@@ -55,6 +55,7 @@ module.exports=(function(){
         console.log("calibrating");
 
         start=location.getNearestLocationFrom(from).ID;
+        console.log(to);
         end=location.getNearestLocationFrom(to).ID;
         delete from,to;
 
@@ -68,9 +69,6 @@ module.exports=(function(){
             for (var i=0;i<_routes.length;i++){
                 if(_routes[i].goesThroughLocations(start,end)){
                     singles.push(_routes[i]);
-
-                    console.log(start,end);
-                    console.log(_routes[i].getPlacesInBetween(start,end),"end");
 
                 }else{
                 }
@@ -93,7 +91,6 @@ module.exports=(function(){
         init:function(plainRoutes){
             createRoutesFromPlain(plainRoutes);
             server.init();
-//            console.log("init done");
         },
         getResultJson:function(from,to){
             return calibrate(from,to);

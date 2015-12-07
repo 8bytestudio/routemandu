@@ -81,7 +81,7 @@ module.exports=(function(){
                     var routes=[];
 
                     for(var i=0;i<raw.routes.length;i++){
-                        if(i!=2)continue;
+//                        if(i!=2)continue;
                         var route=raw.routes[i];
                         route.locations=new Array(config.routemaxlength);
                         route.vehicles=[];
@@ -102,9 +102,9 @@ module.exports=(function(){
                             }
                         }
 
+                        routes.push(route);
                     }
 
-                    routes.push(route);
 
                     resolve(routes);
 
