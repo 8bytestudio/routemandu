@@ -4,15 +4,30 @@
 
 var location=require("./location");
 var _=require("underscore");
+var config=require("../config");
 
 module.exports.distanceBetween=function(a,b){
     if(! (a instanceof Object)) a=location.getById(a);
     if(! (a instanceof Object)) b=location.getById(b);
-
     var xDiff=Math.abs(a.latitude- b.latitude);
     var yDiff=Math.abs(a.longitude- b.longitude);
 
-    return Math.pow(xDiff*xDiff-yDiff*yDiff,0.5);
+    var diff=Math.pow(xDiff*xDiff+yDiff*yDiff,0.5);
+    return diff;
+}
+
+module.exports.calculateDistance=function(array){
+    var distance=0;
+
+    for(var i=0;i<array.length-1;i++){
+        var routeDistance = module.exports.distanceBetween(array[i],array[i+1]);
+        distance += routeDistance;
+
+    }
+    return distance*config.coordToKmFactor;
+}
+module.exports.calculateDistanceFriendly=function(locations){
+    return Math.round(module.exports.calculateDistance(locations)*1000)/1000+" km";
 }
 
 module.exports.formatLocationsFromIDs=function(array){
@@ -56,4 +71,32 @@ module.exports.getRoutesThatPassThroughPoints=function(){
     }
 
     return result;
+}
+
+module.exports.calculateFare=function(distance,vType){
+    var fare=distance*config.fareConstant;
+
+    if(fare<config.minFare)fare=config.minFare;
+
+    return fare;
+}
+module.exports.calculateFareFriendly=function(locations,vType){
+    return "Rs. "+module.exports.calculateFare(
+
+        module.exports.calculateDistance(locations),
+        vType);
+}
+
+module.exports.vehicleETA=function(distance,vType){
+    var fare=distance/config.vehicleAvgSpeed;
+
+    if(fare<config.minFare)fare=config.minFare;
+
+    return fare;
+}
+
+module.exports.friendlyVehicleETA=function(distance,vType){
+    var speed=module.exports.vehicleETA(distance,vType);
+
+    return speed+" minutes";
 }

@@ -30,17 +30,34 @@ module.exports=(function(){
 
         var places=routes[0].getPlacesInBetween(from,to);
         item.locations=utils.formatLocationsFromIDs(places);
+        item.type="vehicle";
+
+        item.distance=utils.calculateDistanceFriendly(item.locations)
 
         item.start=location.getById(from);
         item.end=location.getById(to);
+
 
         for(var i=0;i<routes.length;i++){
             var route=routes[i];
             item.vehicles=item.vehicles.concat(route.vehicles);
         }
 
+        for(var i=0;i<item.vehicles.length;i++){
+            item.vehicles[i].cost=utils.calculateFareFriendly(item.locations,item.vehicles[i].vType);
+
+            item.vehicles[i].eta=utils.friendlyVehicleETA(
+                utils.calculateDistance(item.locations),
+                item.vehicles[i].vType);
+            item.vehicles[i].realEta=utils.vehicleETA(
+                utils.calculateDistance(item.locations),
+                item.vehicles[i].vType);
+
+        }
+
         return item;
     }
+
     var parseResult=function(result){
         var output=[];
 
@@ -55,10 +72,11 @@ module.exports=(function(){
 
                 chain.push(getParsingChainItem(item_raw.routes))
 
-                output.push(chain);
+                output.push({
+                    steps:chain,
+                    info:"From Hattiban to Satdobato"
+                });
             }else if(item_raw.type=="double"){
-                console.log("double found");
-
                 chain.push(getParsingChainItem(
                     item_raw.first,
                     start,
@@ -69,7 +87,10 @@ module.exports=(function(){
                     item_raw.firstInterval,
                     end));
 
-                output.push(chain);
+                output.push({
+                    steps:chain,
+                    info:"From Hattiban to Satdobato to Gwarko"
+                });
 
             }
         }
@@ -128,11 +149,15 @@ module.exports=(function(){
                     doubles.push(route);
                     results.push(route);
 
-                    console.log("DONE");
+                }
+
+                if(doubles.length>0){
+                    results.push(doubles);
+                }else{
+                    //triple route checking
 
                 }
 
-                results.push(doubles);
 
             }
         }else{

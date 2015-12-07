@@ -15,6 +15,13 @@ module.exports={
     //to convert latitude and longitude to kilometers
     coordToKmFactor:5,
 
+    //fare per distance cost
+    fareConstant:1.2,
+
+    minFare:13,
+
+    vehicleAvgSpeed:16,
+
     routemaxlength:1000,
 
     //id from mysql vehicleTypes table
