@@ -1,85 +1,15 @@
 var Q=require("q");
-var mysql=require("mysql");
+
 var config=require("../config");
 var location=require("./location");
-
-var connection=mysql.createConnection({
-    host:config.mysql.host,
-    user:config.mysql.username,
-    password:config.mysql.password,
-    database:config.mysql.db
-});
+var mysqlHandler=require("./mysqlHandler");
 
 module.exports=(function(){
-    var fetchRoutes=function() {
-        return Q.Promise(function (resolve) {
-            var locations = [];
-            var vehicles = [];
-            var roadways = [];
-            var routes = [];
-            var route_locations = [];
-
-            connection.connect();
-
-            connection.query("SELECT * from location", function (err, rows, fields) {
-                if (err) {
-                    reject(err);
-                    return;
-                }
-
-                locations = locations.concat(rows);
-
-                connection.query("SELECT " +
-                    "vehicle.ID as ID," +
-                    "vehicle.name as name," +
-                    "vehicle.routeID as routeID," +
-                    "vehicletype.name as vType, " +
-                    "vehicletype.ID as vTypeID " +
-                    "from vehicle inner join vehicletype on vehicle.typeID=vehicletype.ID", function (err, rows, fields) {
-                    if (err) {
-                        reject(err);
-                        return;
-                    }
-
-                    vehicles = vehicles.concat(rows);
-
-
-                    connection.query("SELECT * from route", function (err, rows, fields) {
-                        if (err) {
-                            reject(err);
-                            return;
-                        }
-
-                        routes = rows;
-
-                        connection.query("SELECT * from route_location", function (err, rows, fields) {
-                            if (err) {
-                                reject(err);
-                                return;
-                            }
-
-                            route_locations = rows;
-
-                            connection.end();
-
-                            resolve({
-                                locations: locations,
-                                routes: routes,
-                                vehicles: vehicles,
-                                route_locations: route_locations
-                            });
-                        });
-                    });
-
-                });
-            })
-        })
-    }
 
     return {
         fetch:function(){
             return Q.Promise(function(resolve){
-                fetchRoutes().then(function(raw){
+                mysqlHandler.fetchRoutes().then(function(raw){
 
                     location.init(raw.locations);
 

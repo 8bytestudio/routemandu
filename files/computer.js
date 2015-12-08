@@ -6,6 +6,7 @@
 var location=require("./location");
 var server=require("./server");
 var utils=require("./utils");
+var config=require("../config");
 var Route_class=require("./route_class");
 var _=require("underscore");
 
@@ -87,47 +88,14 @@ module.exports=(function(){
                     utils.calculateDistance(data.locations),
                     data.vehicles[x].vType);
 
+                data.vehicles[x].direction=data.vehicles[x].name+" to "+ _.last(data.locations).name;
+
             }
 
             ret.push(data);
         }
 
         return ret;
-
-        var item={"locations":[],"vehicles":[]};
-
-        var places=routes[0].getPlacesInBetween(from,to);
-
-        item.locations=utils.formatLocationsFromIDs(places);
-        item.type="vehicle";
-
-        item.distance=utils.calculateDistanceFriendly(item.locations)
-        item.realDistance=utils.calculateDistance(item.locations)
-
-        item.start=location.getById(from);
-        item.end=location.getById(to);
-
-
-        for(var i=0;i<routes.length;i++){
-            var route=routes[i];
-            item.vehicles=item.vehicles.concat(route.vehicles);
-        }
-
-        for(var i=0;i<item.vehicles.length;i++){
-            item.vehicles[i].cost=utils.calculateFareFriendly(item.locations,item.vehicles[i].vType);
-            item.vehicles[i].realCost=utils.calculateFare(utils.calculateDistance(item.locations),item.vehicles[i].vType);
-
-            item.vehicles[i].eta=utils.friendlyVehicleETA(
-                utils.calculateDistance(item.locations),
-                item.vehicles[i].vType);
-            item.vehicles[i].realEta=utils.vehicleETA(
-                utils.calculateDistance(item.locations),
-                item.vehicles[i].vType);
-            item.vehicles[i].direction=item.vehicles[i].name + "to "+ _.last(item.locations).name;
-
-        }
-
-        return item;
     }
 
     var addWalkingStepsToChain=function(chain){
@@ -143,6 +111,7 @@ module.exports=(function(){
             "eta":utils.friendlyWalkingETA(utils.distanceBetween(realStart,chain[0].locations[0])),
             "realEta":utils.walkingETA(utils.distanceBetween(realStart,chain[0].locations[0])),
             cost:"0",
+            locations:[realStart,chain[0].locations[0]],
             realCost:0
         }
 
@@ -154,11 +123,19 @@ module.exports=(function(){
             "eta":utils.friendlyWalkingETA(utils.distanceBetween(realEnd,_.last( _.last(chain).locations))),
             "realEta":utils.walkingETA(utils.distanceBetween(realEnd,_.last( _.last(chain).locations))),
             cost:"0",
-            realCost:0
+            realCost:0,
+            locations:[_.last( _.last(chain).locations),realEnd]
         }
 
         chain.unshift(initial);
         chain.push(final);
+
+        return chain;
+    }
+    var addColorsToChain=function(chain){
+        for(var i=0;i<chain.length;i++){
+            chain[i].color=config.routeColors[i];
+        }
 
         return chain;
     }
@@ -176,7 +153,7 @@ module.exports=(function(){
                 for(var x=0;x<items.length;x++){
 
                     output.push({
-                        steps:addWalkingStepsToChain([items[x]]),
+                        steps:addColorsToChain(addWalkingStepsToChain([items[x]])),
                         info:utils.generateChainTitle([items[x]])
                     });
                 }
@@ -209,13 +186,13 @@ module.exports=(function(){
                     seconds.forEach(function(second){
                         if(item_raw.type=="double"){
                             output.push({
-                                steps:addWalkingStepsToChain([first,second]),
+                                steps:addColorsToChain(addWalkingStepsToChain([first,second])),
                                 info:utils.generateChainTitle([first,second])
                             });
                         }else{
                             thirds.forEach(function(third){
                                 output.push({
-                                    steps:addWalkingStepsToChain([first,second,third]),
+                                    steps:addColorsToChain(addWalkingStepsToChain([first,second,third])),
                                     info:utils.generateChainTitle([first,second,third])
                                 });
                             })
