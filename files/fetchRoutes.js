@@ -94,6 +94,7 @@ module.exports=(function(){
 
                         route.locations=route.locations.filter(function(n){return n;});
 
+                        route.locations.splice(-1,1);
 
                         for(var j=0;j<raw.vehicles.length;j++){
 

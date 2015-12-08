@@ -50,7 +50,7 @@ Route_Class.prototype.getPlacesInBetween=function(a,b){
 
     for(var i=0;i<aIndexes.length;i++){
         for(var j=0;j<bIndexes.length;j++){
-            distance=Route_Class.prototype.getDistanceBetweenIndexes(aIndexes[i],bIndexes[j]);
+            var distance=this.getDistanceBetweenIndexes(aIndexes[i],bIndexes[j]);
 
             permutations.push({
                 "a":aIndexes[i],
@@ -76,29 +76,24 @@ Route_Class.prototype.getPlacesInBetween=function(a,b){
 Route_Class.prototype.getPlacesInBetweenIndexes=function(a,b){
     var result=[];
 
-//    console.log(this.locations);
-//    console.log(this.id);
-//    console.log(this);
 
     if(b<a){
         result= this.locations.slice(a,this.locations.length);
         result= result.concat( this.locations.slice(0,b+1) );
     }else if(b>a){
-
-        result=(this.locations.slice(a,b+1));
+        result=this.locations.slice(a,b+1);
     }
 
     return result;
 }
 
 Route_Class.prototype.getDistanceBetweenIndexes=function(a,b){
-//    console.log(this);
     var places=this.getPlacesInBetweenIndexes(a,b);
-
 
     var distance=0;
     for(var i=0;i<places.length-2;i++){
-        distance +=utils.distanceBetween(places[i],places[i+1]);
+        var short=utils.distanceBetween(places[i],places[i+1]);
+        distance += short;
     }
 
     return distance;

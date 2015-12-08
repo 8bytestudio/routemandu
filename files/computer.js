@@ -29,10 +29,12 @@ module.exports=(function(){
         var item={"locations":[],"vehicles":[]};
 
         var places=routes[0].getPlacesInBetween(from,to);
+
         item.locations=utils.formatLocationsFromIDs(places);
         item.type="vehicle";
 
         item.distance=utils.calculateDistanceFriendly(item.locations)
+        item.realDistance=utils.calculateDistance(item.locations)
 
         item.start=location.getById(from);
         item.end=location.getById(to);
@@ -45,6 +47,7 @@ module.exports=(function(){
 
         for(var i=0;i<item.vehicles.length;i++){
             item.vehicles[i].cost=utils.calculateFareFriendly(item.locations,item.vehicles[i].vType);
+            item.vehicles[i].realCost=utils.calculateFare(utils.calculateDistance(item.locations),item.vehicles[i].vType);
 
             item.vehicles[i].eta=utils.friendlyVehicleETA(
                 utils.calculateDistance(item.locations),
@@ -74,7 +77,7 @@ module.exports=(function(){
 
                 output.push({
                     steps:chain,
-                    info:"From Hattiban to Satdobato"
+                    info:"Hattiban -> Satdobato"
                 });
             }else if(item_raw.type=="double"){
                 chain.push(getParsingChainItem(
@@ -89,7 +92,7 @@ module.exports=(function(){
 
                 output.push({
                     steps:chain,
-                    info:"From Hattiban to Satdobato to Gwarko"
+                    info:"Hattiban -> Satdobato -> Gwarko"
                 });
 
             }

@@ -8,7 +8,8 @@ module.exports=(function(){
             locations=all;
 
             locations.forEach(function(location){
-                location.url="https://www.google.com.np/maps/@"+location.latitude+","+location.longitude+",21z";
+
+                location.url="http://maps.google.com/maps?q=loc:"+location.latitude+","+location.longitude+"&z=17";
             })
         },
         getById:function(id){

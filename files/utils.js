@@ -8,7 +8,7 @@ var config=require("../config");
 
 module.exports.distanceBetween=function(a,b){
     if(! (a instanceof Object)) a=location.getById(a);
-    if(! (a instanceof Object)) b=location.getById(b);
+    if(! (b instanceof Object)) b=location.getById(b);
     var xDiff=Math.abs(a.latitude- b.latitude);
     var yDiff=Math.abs(a.longitude- b.longitude);
 

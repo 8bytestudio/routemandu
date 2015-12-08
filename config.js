@@ -9,7 +9,7 @@ module.exports={
         host:"localhost",
         db:"mapsnew",
         username:"root",
-        password:"root",
+        password:"root"
     },
 
     //to convert latitude and longitude to kilometers
@@ -18,7 +18,7 @@ module.exports={
     //fare per distance cost
     fareConstant:1.2,
 
-    minFare:13,
+    minFare:16,
 
     vehicleAvgSpeed:16,
 
@@ -30,5 +30,5 @@ module.exports={
     ID_TEMPO:4,
     ID_BIG_MICRO:5,
 
-    port:10000,
+    port:10001
 }
