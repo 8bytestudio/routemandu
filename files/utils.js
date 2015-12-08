@@ -85,7 +85,7 @@ module.exports.calculateFare=function(distance,vType){
 
     if(fare<config.minFare)fare=config.minFare;
 
-    return fare;
+    return Math.ceil(fare);
 }
 module.exports.calculateFareFriendly=function(locations,vType){
     return "Rs. "+module.exports.calculateFare(
