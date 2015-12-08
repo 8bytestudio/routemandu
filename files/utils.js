@@ -9,6 +9,7 @@ var config=require("../config");
 module.exports.distanceBetween=function(a,b){
     if(! (a instanceof Object)) a=location.getById(a);
     if(! (b instanceof Object)) b=location.getById(b);
+
     var xDiff=Math.abs(a.latitude- b.latitude);
     var yDiff=Math.abs(a.longitude- b.longitude);
 
@@ -26,8 +27,13 @@ module.exports.calculateDistance=function(array){
     }
     return distance*config.coordToKmFactor;
 }
-module.exports.calculateDistanceFriendly=function(locations){
-    return Math.round(module.exports.calculateDistance(locations)*1000)/1000+" km";
+module.exports.calculateDistanceFriendly=function(){
+    if(arguments.length ==1){
+        return Math.round(module.exports.calculateDistance(arguments[0])*1000)/1000+" km";
+    }else{
+        return Math.round(module.exports.calculateDistance(arguments)*1000)/1000+" km";
+    }
+
 }
 
 module.exports.formatLocationsFromIDs=function(array){
@@ -88,15 +94,48 @@ module.exports.calculateFareFriendly=function(locations,vType){
 }
 
 module.exports.vehicleETA=function(distance,vType){
-    var fare=distance/config.vehicleAvgSpeed;
+    var eta=60*distance/config.vehicleAvgSpeed;
 
-    if(fare<config.minFare)fare=config.minFare;
-
-    return fare;
+    return eta;
 }
 
 module.exports.friendlyVehicleETA=function(distance,vType){
-    var speed=module.exports.vehicleETA(distance,vType);
+    var eta=module.exports.vehicleETA(distance,vType);
+
+    eta=Math.round(eta*100)/100;
+
+    return eta+" minutes";
+}
+
+module.exports.walkingETA=function(distance){
+    var eta=distance/config.walkingAvgSpeed;
+
+    return eta;
+}
+
+module.exports.friendlyWalkingETA=function(distance){
+    var speed=module.exports.walkingETA(distance);
+
+    speed=Math.round(speed*100,2)/100;
 
     return speed+" minutes";
+}
+
+module.exports.generateChainTitle=function(chain){
+    var output="";
+    console.log(chain);
+    for(var i=0;i<chain.length;i++){
+        if(chain[i].type != "vehicle")continue;
+
+        output += chain[i].locations[0].name;
+
+        output += " -> ";
+
+        if(i==chain.length-1){
+            output += _.last(chain[i].locations).name;
+        }
+    }
+
+
+    return output;
 }

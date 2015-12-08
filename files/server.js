@@ -12,12 +12,12 @@ module.exports=(function(){
 //            res.send('Hello World!');
 
             var start={
-                lat:parseFloat(req.query.fromLat),
-                lng:parseFloat(req.query.fromLng)
+                latitude:parseFloat(req.query.fromLat),
+                longitude:parseFloat(req.query.fromLng)
             };
             var end={
-                lat:parseFloat(req.query.toLat),
-                lng:parseFloat(req.query.toLng)
+                latitude:parseFloat(req.query.toLat),
+                longitude:parseFloat(req.query.toLng)
             };
 
             var begin=new Date();

@@ -21,8 +21,8 @@ module.exports=(function(){
         },
         getNearestLocationFrom:function(lat,lng){
             if(lat instanceof Object){
-                lng=lat.lng;
-                lat=lat.lat;
+                lng=lat.longitude;
+                lat=lat.latitude;
             }
 
             var shortestDistance=10000000;
