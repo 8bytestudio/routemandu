@@ -275,6 +275,7 @@ module.exports=(function(){
                         }
 
                         var unique=true;
+
                         for(var x=0;x<uniqueIntersects.length;x++){
                             var uniqueIntersect=uniqueIntersects[x];
 
@@ -283,6 +284,7 @@ module.exports=(function(){
                                 uniqueIntersect.intersects.push(intersect);
                                 unique=false;
                                 break;
+                            }else{
 
                             }
                         }
@@ -291,6 +293,9 @@ module.exports=(function(){
                             uniqueIntersects.push(process);
                         }
                     }
+
+
+
                     for(var i=0;i<uniqueIntersects.length;i++){
                         var aRoutes=uniqueIntersects[i].initial;
                         var bRoutes=uniqueIntersects[i].final;
@@ -305,15 +310,12 @@ module.exports=(function(){
                         doubles.push(route);
                         results.push(route);
                     }
-
                 }
 
                 if(doubles.length>0){
 //                    results.push(doubles);
                 }else{
                     //triple route checking
-                    console.log("triple routing");
-
                     for(var i=0;i<aLocations.length;i++){
                         var aTransition=aLocations[i];
 

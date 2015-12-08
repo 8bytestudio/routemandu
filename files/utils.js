@@ -149,6 +149,10 @@ module.exports.containSameRoute=function(a,b,from,to){
 //takes two arrays containing routes.
 //returns true if the two arrays contain the same routes, independent of their order
 module.exports.sameRouteArrays=function(a,b){
-    var result=_.intersection(a,b);
-    return result.length== a.length== b.length;
+    if(a.length != b.length)return false;
+
+    var result=_.intersection(a, b);
+
+    same=result.length== a.length;
+    return same;
 }
