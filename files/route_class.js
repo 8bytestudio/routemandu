@@ -45,7 +45,6 @@ Route_Class.prototype.indexesOf=function(point){
 Route_Class.prototype.getPlacesInBetween=function(a,b){
     var aIndexes=this.indexesOf(a);
     var bIndexes=this.indexesOf(b);
-
     var permutations=[];
 
     for(var i=0;i<aIndexes.length;i++){

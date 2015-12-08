@@ -29,7 +29,13 @@ module.exports=(function(){
 
                 locations = locations.concat(rows);
 
-                connection.query("SELECT vehicle.ID as ID,vehicle.name as name,vehicle.routeID as routeID,vehicletype.name as vType from vehicle inner join vehicletype on vehicle.typeID=vehicletype.ID", function (err, rows, fields) {
+                connection.query("SELECT " +
+                    "vehicle.ID as ID," +
+                    "vehicle.name as name," +
+                    "vehicle.routeID as routeID," +
+                    "vehicletype.name as vType, " +
+                    "vehicletype.ID as vTypeID " +
+                    "from vehicle inner join vehicletype on vehicle.typeID=vehicletype.ID", function (err, rows, fields) {
                     if (err) {
                         reject(err);
                         return;

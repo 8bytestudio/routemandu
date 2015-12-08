@@ -28,6 +28,7 @@ module.exports.calculateDistance=function(array){
     return distance*config.coordToKmFactor;
 }
 module.exports.calculateDistanceFriendly=function(){
+
     if(arguments.length ==1){
         return Math.round(module.exports.calculateDistance(arguments[0])*1000)/1000+" km";
     }else{
@@ -96,9 +97,8 @@ module.exports.calculateFareFriendly=function(locations,vType){
 module.exports.vehicleETA=function(distance,vType){
     var eta=60*distance/config.vehicleAvgSpeed;
 
-    return eta;
+    return Math.ceil(eta);
 }
-
 module.exports.friendlyVehicleETA=function(distance,vType){
     var eta=module.exports.vehicleETA(distance,vType);
 
@@ -110,9 +110,8 @@ module.exports.friendlyVehicleETA=function(distance,vType){
 module.exports.walkingETA=function(distance){
     var eta=distance/config.walkingAvgSpeed;
 
-    return eta;
+    return Math.ceil(eta);
 }
-
 module.exports.friendlyWalkingETA=function(distance){
     var speed=module.exports.walkingETA(distance);
 
@@ -123,7 +122,6 @@ module.exports.friendlyWalkingETA=function(distance){
 
 module.exports.generateChainTitle=function(chain){
     var output="";
-    console.log(chain);
     for(var i=0;i<chain.length;i++){
         if(chain[i].type != "vehicle")continue;
 
@@ -138,4 +136,19 @@ module.exports.generateChainTitle=function(chain){
 
 
     return output;
+}
+
+//contain same location in routes?
+module.exports.containSameRoute=function(a,b,from,to){
+    aLocs=a.getPlacesInBetween(from,to)
+    bLocs= b.getPlacesInBetween(from,to);
+
+    return aLocs.toString()==bLocs.toString();
+}
+
+//takes two arrays containing routes.
+//returns true if the two arrays contain the same routes, independent of their order
+module.exports.sameRouteArrays=function(a,b){
+    var result=_.intersection(a,b);
+    return result.length== a.length== b.length;
 }

@@ -13,17 +13,17 @@ module.exports={
     },
 
     //to convert latitude and longitude to kilometers
-    coordToKmFactor:5,
+    coordToKmFactor:111.111,
 
     //fare per distance cost
-    fareConstant:1.2,
+    fareConstant:2,
 
-    minFare:16,
+    minFare:15,
 
     vehicleAvgSpeed:16,
     walkingAvgSpeed:8,
 
-    routemaxlength:1000,
+    routemaxlength:200,
 
     //id from mysql vehicleTypes table
     ID_SMALL_MICRO:1,
@@ -31,5 +31,5 @@ module.exports={
     ID_TEMPO:4,
     ID_BIG_MICRO:5,
 
-    port:10000
+    port:10001
 }
