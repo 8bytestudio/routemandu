@@ -33,5 +33,7 @@ module.exports={
 
     port:10003,
 
-    routeColors:["#ff3399","#33ff33","#3333ff","#00B4D2","#1900f3"]
+
+    routeColors:["#4183D7", "#03C9A9", "#FDE3A7", "#F9690E", "#F9BF3B", "#2980b9", "#f1c40f", "#34495e"]
+
 }
