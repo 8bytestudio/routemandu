@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bb3f08d-0bba-4add-aa0f-1feb9ebd17a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/utils.js" afterPath="$PROJECT_DIR$/files/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/computer.js" afterPath="$PROJECT_DIR$/files/computer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="roadway-api.iws" />
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="utils.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="utils.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/files/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40894568" vertical-offset="179" max-vertical-offset="930">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="930">
+              <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
               <folding>
                 <element signature="e#0#38#0" expanded="false" />
                 <element signature="e#183#465#0" expanded="false" />
@@ -60,6 +60,30 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="computer.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/files/computer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5804196" vertical-offset="621" max-vertical-offset="4200">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#38#0" expanded="false" />
+                <element signature="e#395#500#0" expanded="false" />
+                <element signature="e#433#494#0" expanded="false" />
+                <element signature="e#554#2765#0" expanded="false" />
+                <element signature="e#699#1141#0" expanded="false" />
+                <element signature="e#808#1054#0" expanded="false" />
+                <element signature="e#916#1040#0" expanded="false" />
+                <element signature="e#1078#1131#0" expanded="false" />
+                <element signature="e#1226#2738#0" expanded="false" />
+                <element signature="e#1840#1958#0" expanded="false" />
+                <element signature="e#2011#2699#0" expanded="false" />
+                <element signature="e#2969#3543#0" expanded="false" />
+                <element signature="e#3563#4194#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -80,21 +104,21 @@
         <option value="$PROJECT_DIR$/files/loader.js" />
         <option value="$PROJECT_DIR$/files/location.js" />
         <option value="$PROJECT_DIR$/files/route_class.js" />
-        <option value="$PROJECT_DIR$/files/computer.js" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/setup.sh" />
         <option value="$PROJECT_DIR$/files/fetchRoutes.js" />
         <option value="$PROJECT_DIR$/files/server.js" />
         <option value="$PROJECT_DIR$/files/mysqlHandler.js" />
         <option value="$PROJECT_DIR$/files/utils.js" />
+        <option value="$PROJECT_DIR$/files/computer.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="43" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1323" />
-    <option name="height" value="772" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -197,6 +221,14 @@
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -207,12 +239,14 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
+    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" />
+      <option name="executablePath" />
       <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -220,16 +254,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" />
-      <option name="executablePath" />
-      <option name="filePath" />
       <method />
     </configuration>
     <configuration default="true" type="NodeJSRemoteDebug" factoryName="Node.js Remote Debug">
@@ -331,7 +355,11 @@
       <created>1449585127542</created>
       <updated>1449585127542</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="bug fix">
+      <created>1449597792866</created>
+      <updated>1449597792866</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -355,12 +383,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="-4" width="1323" height="772" extended-state="6" />
+    <frame x="43" y="24" width="1323" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2848392" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28396946" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24884793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -371,11 +398,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -410,7 +438,8 @@
     <MESSAGE value="advanced functionality of single and double vehicles" />
     <MESSAGE value="perfected double vehicle" />
     <MESSAGE value="added api for feedback&#10;readied for deployment" />
-    <option name="LAST_COMMIT_MESSAGE" value="added api for feedback&#10;readied for deployment" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -418,6 +447,38 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/files/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+            <element signature="e#183#465#0" expanded="false" />
+            <element signature="e#515#745#0" expanded="false" />
+            <element signature="e#575#699#0" expanded="false" />
+            <element signature="e#797#1028#0" expanded="false" />
+            <element signature="e#828#926#0" expanded="false" />
+            <element signature="e#930#1025#0" expanded="false" />
+            <element signature="e#1083#1279#0" expanded="false" />
+            <element signature="e#1140#1258#0" expanded="false" />
+            <element signature="e#1499#1647#0" expanded="false" />
+            <element signature="e#1563#1640#0" expanded="false" />
+            <element signature="e#1727#2008#0" expanded="false" />
+            <element signature="e#1834#1986#0" expanded="false" />
+            <element signature="e#1924#1980#0" expanded="false" />
+            <element signature="e#2250#2371#0" expanded="false" />
+            <element signature="e#2423#2502#0" expanded="false" />
+            <element signature="e#2561#2681#0" expanded="false" />
+            <element signature="e#2727#2803#0" expanded="false" />
+            <element signature="e#2856#2980#0" expanded="false" />
+            <element signature="e#3031#3336#0" expanded="false" />
+            <element signature="e#3087#3313#0" expanded="false" />
+            <element signature="e#3241#3307#0" expanded="false" />
+            <element signature="e#3426#3559#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
@@ -492,7 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5700637" vertical-offset="17" max-vertical-offset="645">
           <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -500,65 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.375" vertical-offset="585" max-vertical-offset="1140">
           <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/computer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375" vertical-offset="225" max-vertical-offset="1050">
-          <caret line="103" column="14" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-            <element signature="e#395#500#0" expanded="false" />
-            <element signature="e#433#494#0" expanded="false" />
-            <element signature="e#554#2765#0" expanded="false" />
-            <element signature="e#699#1141#0" expanded="false" />
-            <element signature="e#808#1054#0" expanded="false" />
-            <element signature="e#916#1040#0" expanded="false" />
-            <element signature="e#1078#1131#0" expanded="false" />
-            <element signature="e#1226#2738#0" expanded="false" />
-            <element signature="e#1840#1958#0" expanded="false" />
-            <element signature="e#2011#2699#0" expanded="false" />
-            <element signature="e#4324#4455#0" expanded="false" />
-            <element signature="e#4365#4426#0" expanded="false" />
-            <element signature="e#4509#6749#0" expanded="false" />
-            <element signature="e#4574#6717#0" expanded="false" />
-            <element signature="e#4653#5011#0" expanded="false" />
-            <element signature="e#4768#4996#0" expanded="false" />
-            <element signature="e#4803#4976#0" expanded="false" />
-            <element signature="e#5015#6707#0" expanded="false" />
-            <element signature="e#5256#5443#0" expanded="false" />
-            <element signature="e#5447#5822#0" expanded="false" />
-            <element signature="e#5870#6691#0" expanded="false" />
-            <element signature="e#5924#6672#0" expanded="false" />
-            <element signature="e#5977#6252#0" expanded="false" />
-            <element signature="e#6019#6224#0" expanded="false" />
-            <element signature="e#6256#6650#0" expanded="false" />
-            <element signature="e#6316#6623#0" expanded="false" />
-            <element signature="e#6362#6591#0" expanded="false" />
-            <element signature="e#6786#11223#0" expanded="false" />
-            <element signature="e#7090#10960#0" expanded="false" />
-            <element signature="e#7234#7311#0" expanded="false" />
-            <element signature="e#7315#10950#0" expanded="false" />
-            <element signature="e#7630#9515#0" expanded="false" />
-            <element signature="e#7800#8917#0" expanded="false" />
-            <element signature="e#7892#8148#0" expanded="false" />
-            <element signature="e#8258#8772#0" expanded="false" />
-            <element signature="e#8518#8710#0" expanded="false" />
-            <element signature="e#8714#8746#0" expanded="false" />
-            <element signature="e#8808#8895#0" expanded="false" />
-            <element signature="e#8983#9497#0" expanded="false" />
-            <element signature="e#9149#9382#0" expanded="false" />
-            <element signature="e#9553#9617#0" expanded="false" />
-            <element signature="e#9621#10935#0" expanded="false" />
-            <element signature="e#9723#10917#0" expanded="false" />
-            <element signature="e#10045#10893#0" expanded="false" />
-            <element signature="e#10388#10729#0" expanded="false" />
-            <element signature="e#10964#11108#0" expanded="false" />
-            <element signature="e#11236#11479#0" expanded="false" />
-            <element signature="e#11272#11358#0" expanded="false" />
-            <element signature="e#11399#11449#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,14 +632,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18072289" vertical-offset="0" max-vertical-offset="415">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/files/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40894568" vertical-offset="179" max-vertical-offset="930">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="930">
+          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
             <element signature="e#183#465#0" expanded="false" />
@@ -663,6 +663,28 @@
             <element signature="e#3087#3313#0" expanded="false" />
             <element signature="e#3241#3307#0" expanded="false" />
             <element signature="e#3426#3559#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/computer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5804196" vertical-offset="621" max-vertical-offset="4200">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+            <element signature="e#395#500#0" expanded="false" />
+            <element signature="e#433#494#0" expanded="false" />
+            <element signature="e#554#2765#0" expanded="false" />
+            <element signature="e#699#1141#0" expanded="false" />
+            <element signature="e#808#1054#0" expanded="false" />
+            <element signature="e#916#1040#0" expanded="false" />
+            <element signature="e#1078#1131#0" expanded="false" />
+            <element signature="e#1226#2738#0" expanded="false" />
+            <element signature="e#1840#1958#0" expanded="false" />
+            <element signature="e#2011#2699#0" expanded="false" />
+            <element signature="e#2969#3543#0" expanded="false" />
+            <element signature="e#3563#4194#0" expanded="false" />
           </folding>
         </state>
       </provider>

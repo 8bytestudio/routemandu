@@ -140,6 +140,34 @@ module.exports=(function(){
         return chain;
     }
 
+
+    var createFinalRouteData=function(chain){
+        var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
+
+        var data= {
+            steps:chain,
+            info:utils.generateChainTitle(chain),
+            zoom:[{},{}]
+        }
+
+        for(var i=0;i<chain.length;i++){
+            for(var x=0;x<chain[i].locations.length;x++){
+                var location=chain[i].locations[x];
+
+                if(aLat>location.latitude)aLat=location.latitude;
+                if(bLat<location.latitude)bLat=location.latitude;
+
+                if(aLng>location.longitude)aLng=location.longitude;
+                if(bLng<location.longitude)bLng=location.longitude;
+            }
+        }
+        data.zoom=[
+            {latitude:aLat,longitude:aLng},
+            {latitude:bLat,longitude:bLng},
+        ]
+        return data;
+
+    }
     var parseResult=function(result,realFrom,realTo){
         var output=[];
         for(var i=0;i<result.length;i++){
@@ -152,10 +180,10 @@ module.exports=(function(){
 
                 for(var x=0;x<items.length;x++){
 
-                    output.push({
-                        steps:addColorsToChain(addWalkingStepsToChain([items[x]])),
-                        info:utils.generateChainTitle([items[x]])
-                    });
+                    output.push(
+                        createFinalRouteData(
+                            addColorsToChain(
+                                addWalkingStepsToChain([items[x]]))));
                 }
 
             }else{
@@ -185,16 +213,11 @@ module.exports=(function(){
                 firsts.forEach(function(first){
                     seconds.forEach(function(second){
                         if(item_raw.type=="double"){
-                            output.push({
-                                steps:addColorsToChain(addWalkingStepsToChain([first,second])),
-                                info:utils.generateChainTitle([first,second])
-                            });
+                            output.push(createFinalRouteData(addColorsToChain(addWalkingStepsToChain([first,second]))));
+
                         }else{
                             thirds.forEach(function(third){
-                                output.push({
-                                    steps:addColorsToChain(addWalkingStepsToChain([first,second,third])),
-                                    info:utils.generateChainTitle([first,second,third])
-                                });
+                                output.push(createFinalRouteData(addColorsToChain(addWalkingStepsToChain([first,second,third]))));
                             })
                         }
                     })
