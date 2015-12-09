@@ -19,7 +19,6 @@ module.exports=(function(){
         var computer=require("./computer");
 
         app.get('/', function (req, res) {
-//            res.send('Hello World!');
             var start={
                 latitude:parseFloat(req.query.fromLat),
                 longitude:parseFloat(req.query.fromLng)

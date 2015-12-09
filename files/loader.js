@@ -1,5 +1,5 @@
 var Q=require("q");
-
+Q.longStackSupport=true;
 
 var fetcher=require("./fetchRoutes");
 var computer=require("./computer");

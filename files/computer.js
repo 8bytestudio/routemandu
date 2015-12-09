@@ -140,7 +140,6 @@ module.exports=(function(){
         return chain;
     }
 
-
     var createFinalRouteData=function(chain){
         var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
 
@@ -245,6 +244,7 @@ module.exports=(function(){
 
         var results=[];
         if(start!=end){
+
 
             //single route checking
             var singles=utils.getRoutesThatPassThroughPoints(start,end)
@@ -351,7 +351,7 @@ module.exports=(function(){
             }
         }else{
             //start and end places are the same. The user has to walk. Sorry user, the destination is nearby!
-            return {};
+            return [];
         }
 
         var parse= parseResult(results);
