@@ -7,9 +7,9 @@ module.exports={
     //on the neo4j server;
     mysql:{//mysql configuration
         host:"localhost",
-        db:"mapsnew",
-        username:"root",
-        password:"root"
+        db:"routemandu",
+        username:"sails",
+        password:"thisisapassword"
     },
 
     //to convert latitude and longitude to kilometers
