@@ -88,7 +88,7 @@ module.exports=(function(){
                     utils.calculateDistance(data.locations),
                     data.vehicles[x].vType);
 
-                data.vehicles[x].direction=data.vehicles[x].name+" to "+ _.last(data.locations).name;
+                data.vehicles[x].direction= _.last(data.locations).name+" on "+data.vehicles[x].name;
 
             }
 

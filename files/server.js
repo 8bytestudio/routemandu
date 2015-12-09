@@ -47,6 +47,23 @@ module.exports=(function(){
             },function(data){
                 res.send(data);
             })
+        });
+
+        app.get('/feedback/show',function(req,res){
+            var output="<html><head><title>Feedbacks</title></head><body>" +
+                "<table width='100%' align='center'><tr><th>ID</th><th>Date</th><th>Message</th></tr>";
+
+
+            mysqlHandler.getFeedbacks().then(function(data){
+                for(var i=0;i<data.length;i++){
+                    output += "<tr align='center'><td>"+data[i].ID+"</td><td>"+data[i].timestamp+"</td><td colspan=2>"+data[i].data+"</td></tr>";
+                }
+
+                output += "</table></body></html>";
+
+                res.send(output);
+            })
+
         })
 
         var server = app.listen(config.port, function () {

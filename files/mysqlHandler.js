@@ -110,6 +110,18 @@ module.exports=(function(){
 
                 console.log(query.sql,"query");
             })
+        },
+        getFeedbacks:function(){
+            return Q.Promise(function(resolve,reject){
+                var query=connection.query('SELECT * from feedback ', function(err, result) {
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    resolve(result);
+                });
+            })
         }
     }
 })();
