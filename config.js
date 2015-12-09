@@ -31,7 +31,7 @@ module.exports={
     ID_TEMPO:4,
     ID_BIG_MICRO:5,
 
-    port:10002,
+    port:10003,
 
     routeColors:["#ff3399","#33ff33","#3333ff","#00B4D2","#1900f3"]
 }
