@@ -83,6 +83,7 @@ module.exports=(function(){
                 data.forEach(function(d){
                     if(! d)return;
                     d=parseInt(d);
+                    if(! d) return;
 
                     count ++;
                     sum += d;
