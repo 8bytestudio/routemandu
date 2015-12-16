@@ -156,3 +156,40 @@ module.exports.sameRouteArrays=function(a,b){
     same=result.length== a.length;
     return same;
 }
+
+module.exports.getUniqueIntersects=function(start,end,intersects){
+    var utils=module.exports;
+
+    //create bundle of unique intersection points
+    var uniqueIntersects=[];
+    for(var i=0;i<intersects.length;i++){
+        var intersect=intersects[i];
+
+        var process={
+            initial:utils.getRoutesThatPassThroughPoints(start,intersect),
+            final:utils.getRoutesThatPassThroughPoints(end,intersect),
+            intersects:[intersect]
+        }
+
+        var unique=true;
+
+        for(var x=0;x<uniqueIntersects.length;x++){
+            var uniqueIntersect=uniqueIntersects[x];
+
+            if(utils.sameRouteArrays(uniqueIntersect.initial,process.initial) &&
+                utils.sameRouteArrays(uniqueIntersect.final,process.final)){
+                uniqueIntersect.intersects.push(intersect);
+                unique=false;
+                break;
+            }else{
+
+            }
+        }
+
+        if(unique){
+            uniqueIntersects.push(process);
+        }
+    }
+
+    return uniqueIntersects;
+}

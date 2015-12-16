@@ -244,8 +244,6 @@ module.exports=(function(){
 
         var results=[];
         if(start!=end){
-
-
             //single route checking
             var singles=utils.getRoutesThatPassThroughPoints(start,end)
 
@@ -263,38 +261,7 @@ module.exports=(function(){
 
                 if(intersects.length>0){
 
-                    //create bundle of unique intersection points
-                    var uniqueIntersects=[];
-                    for(var i=0;i<intersects.length;i++){
-                        var intersect=intersects[i];
-
-                        var process={
-                            initial:utils.getRoutesThatPassThroughPoints(start,intersect),
-                            final:utils.getRoutesThatPassThroughPoints(end,intersect),
-                            intersects:[intersect]
-                        }
-
-                        var unique=true;
-
-                        for(var x=0;x<uniqueIntersects.length;x++){
-                            var uniqueIntersect=uniqueIntersects[x];
-
-                            if(utils.sameRouteArrays(uniqueIntersect.initial,process.initial) &&
-                                utils.sameRouteArrays(uniqueIntersect.final,process.final)){
-                                uniqueIntersect.intersects.push(intersect);
-                                unique=false;
-                                break;
-                            }else{
-
-                            }
-                        }
-
-                        if(unique){
-                            uniqueIntersects.push(process);
-                        }
-                    }
-
-
+                    var uniqueIntersects=utils.getUniqueIntersects(start,end,intersects);
 
                     for(var i=0;i<uniqueIntersects.length;i++){
                         var aRoutes=uniqueIntersects[i].initial;
