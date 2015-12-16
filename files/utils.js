@@ -129,7 +129,7 @@ module.exports.generateChainTitle=function(chain){
 
         output += " -> ";
 
-        if(i==chain.length-1){
+        if(i==chain.length-2){
             output += _.last(chain[i].locations).name;
         }
     }
