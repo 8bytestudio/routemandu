@@ -28,14 +28,17 @@ module.exports=(function(){
                 longitude:parseFloat(req.query.toLng)
             };
 
-            var begin=new Date();
+            var beginTime=new Date();
             var result=computer.getResultJson(start,end);
-            var end=new Date();
+            var endTime=new Date();
 
-//            res.send({
-//                elapsed:end-begin,
-//                result:result
-//            });
+            var elapsed=endTime-beginTime;
+            if(result.length>0){
+                result.forEach(function(route){
+                    route.elapsed=elapsed;
+                })
+            }
+
             res.send(result);
         });
 
