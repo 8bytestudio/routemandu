@@ -5,6 +5,7 @@ var express=require("express");
 var config=require("../config");
 var bodyParser=require("body-parser");
 var mysqlHandler=require("./mysqlHandler");
+var fs=require("fs");
 
 var app=express();
 
@@ -38,6 +39,14 @@ module.exports=(function(){
                     route.elapsed=elapsed;
                 })
             }
+
+            fs.appendFile('output/eta.txt', elapsed +' \n', function (err) {
+                if(err) {
+                    return console.log(err);
+                }
+
+//                console.log("The file was saved!");
+            });
 
             res.send(result);
         });

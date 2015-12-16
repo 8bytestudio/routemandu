@@ -1,16 +1,17 @@
 {
-    "name": "roadway-api",
-    "version": "0.0.0",
-    "description": "API for GhumGham to use in mobile application",
-    "main": "index.js",
-    "scripts": {
-        "test": "test"
-    },
-    "author": "8byte Creative Studio",
-    "license": "ISC",
-    "dependencies": {
-        "q": "^1.4.1",
-        "underscore": "^1.8.3",
-        "mysql":"*"
-    }
+  "name": "roadway-api",
+  "version": "0.0.0",
+  "description": "API for GhumGham to use in mobile application",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "8byte Creative Studio",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.2",
+    "mysql": "*",
+    "q": "^1.4.1",
+    "underscore": "^1.8.3"
+  }
 }
