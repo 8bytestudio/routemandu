@@ -34,18 +34,12 @@ module.exports=(function(){
             var endTime=new Date();
 
             var elapsed=endTime-beginTime;
-            if(result.length>0){
-                result.forEach(function(route){
-                    route.elapsed=elapsed;
-                })
-            }
 
-            fs.appendFile('output/eta.txt', elapsed +' \n', function (err) {
+            fs.appendFile('output/eta.txt', elapsed +'\n', function (err) {
                 if(err) {
                     return console.log(err);
                 }
 
-//                console.log("The file was saved!");
             });
 
             res.send(result);
@@ -75,6 +69,32 @@ module.exports=(function(){
                 res.send(output);
             })
 
+        })
+
+        app.get("/stats",function(req,res){
+            fs.readFile('output/eta.txt', 'utf8', function (err,data) {
+                if (err) {
+                    return console.log(err,"error");
+                }
+                data=data.replace("\n"," ").replace("\n","").split(" ");
+                var sum=0;
+                var count=0;
+
+                data.forEach(function(d){
+                    if(! d)return;
+                    d=parseInt(d);
+
+                    count ++;
+                    sum += d;
+                })
+
+
+                res.send({
+                    sum:sum,
+                    count:count,
+                    avg:sum/count,
+                });
+            });
         })
 
         var server = app.listen(config.port, function () {
