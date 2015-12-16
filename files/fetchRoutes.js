@@ -3,6 +3,8 @@ var Q=require("q");
 var config=require("../config");
 var location=require("./location");
 var mysqlHandler=require("./mysqlHandler");
+var utils=require("./utils");
+var _=require("underscore");
 
 module.exports=(function(){
 
@@ -13,6 +15,17 @@ module.exports=(function(){
 
                     location.init(raw.locations);
 
+                    for(var i=0;i<raw.vehicles.length;i++){
+                        var v=raw.vehicles[i];
+
+                        try{
+                            v.desc= _.unescape(v.desc)
+                            v.data= JSON.parse(v.desc)
+                            v.desc= v.data.desc || "";
+                        }catch(err){
+                            v.data={};
+                        }
+                    };
 
                     var routes=[];
 
@@ -39,12 +52,17 @@ module.exports=(function(){
                             }
                         }
 
+
+
                         routes.push(route);
                     }
 
 
                     resolve(routes);
 
+                },function(e){
+                    console.log("error getting data from mysql db");
+                    console.log(e);
                 })
 
             })

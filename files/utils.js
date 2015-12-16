@@ -193,3 +193,14 @@ module.exports.getUniqueIntersects=function(start,end,intersects){
 
     return uniqueIntersects;
 }
+
+module.exports.decodeMysqlString=function(str){
+    if(str && typeof str === 'string') {
+        // strip script/html tags
+        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+    }
+
+
+    return str;
+}

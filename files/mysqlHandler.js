@@ -18,6 +18,7 @@ module.exports=(function(){
     return {
         fetchRoutes:function() {
             return Q.Promise(function (resolve,reject) {
+
                 var locations = [];
                 var vehicles = [];
                 var roadways = [];
@@ -36,20 +37,19 @@ module.exports=(function(){
                     locations = locations.concat(rows);
 
                     connection.query("SELECT " +
-                        "vehicle.ID as ID," +
-                        "vehicle.name as name," +
-                        "vehicle.routeID as routeID," +
+                        "vehicle.ID as ID, " +
+                        "vehicle.name as `name`, " +
+                        "vehicle.desc as `desc`, " +
+                        "vehicle.routeID as routeID, " +
                         "vehicletype.name as vType, " +
                         "vehicletype.ID as vTypeID " +
                         "from vehicle inner join vehicletype on vehicle.typeID=vehicletype.ID", function (err, rows, fields) {
                         if (err) {
-
                             reject(err);
                             return;
                         }
 
                         vehicles = vehicles.concat(rows);
-
 
                         connection.query("SELECT * from route", function (err, rows, fields) {
                             if (err) {

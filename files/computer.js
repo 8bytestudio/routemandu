@@ -89,7 +89,6 @@ module.exports=(function(){
                     data.vehicles[x].vType);
 
                 data.vehicles[x].direction= _.last(data.locations).name+" on "+data.vehicles[x].name;
-
             }
 
             ret.push(data);
@@ -164,6 +163,12 @@ module.exports=(function(){
             {latitude:aLat,longitude:aLng},
             {latitude:bLat,longitude:bLng},
         ]
+        data.availability={
+            from:5*60,
+            to:(8+12)*60,
+        }
+
+        data.availability.info="From 5 AM to 8 PM";
         return data;
 
     }
