@@ -161,11 +161,11 @@ module.exports=(function(){
         }
         data.zoom=[
             {latitude:aLat,longitude:aLng},
-            {latitude:bLat,longitude:bLng},
+            {latitude:bLat,longitude:bLng}
         ]
         data.availability={
             from:5*60,
-            to:(8+12)*60,
+            to:(8+12)*60
         }
 
         data.availability.info="From 5 AM to 8 PM";
@@ -248,82 +248,101 @@ module.exports=(function(){
         if(! (start && end)) return {};
 
         var results=[];
-        if(start!=end){
-            //single route checking
-            var singles=utils.getRoutesThatPassThroughPoints(start,end)
+        if(start==end) return [];
+        //single route checking
+        var singles=utils.getRoutesThatPassThroughPoints(start,end)
 
-            if(singles.length>0){
-                results.push({type:"single",routes:singles});
-            }else{
-                //double route checking
+        if(singles.length>0){
+            results.push({type:"single",routes:singles});
+        }else{
+            //double route checking
 
-                var doubles=[];
+            var doubles=[];
 
-                var aLocations=utils.getPointsThatGoFrom(start);
-                var bLocations=utils.getPointsThatGoFrom(end);
+            var aLocations=utils.getPointsThatGoFrom(start);
+            var bLocations=utils.getPointsThatGoFrom(end);
 
-                var intersects=_.intersection(aLocations,bLocations);
+            var intersects=_.intersection(aLocations,bLocations);
 
-                if(intersects.length>0){
+            if(intersects.length>0){
 
-                    var uniqueIntersects=utils.getUniqueIntersects(start,end,intersects);
+                var uniqueIntersects=utils.getUniqueIntersects(start,end,intersects);
 
-                    for(var i=0;i<uniqueIntersects.length;i++){
-                        var aRoutes=uniqueIntersects[i].initial;
-                        var bRoutes=uniqueIntersects[i].final;
+                for(var i=0;i<uniqueIntersects.length;i++){
+                    var aRoutes=uniqueIntersects[i].initial;
+                    var bRoutes=uniqueIntersects[i].final;
 
-                        var route=({
-                            type:"double",
-                            first:aRoutes,
-                            firstInterval:uniqueIntersects[i].intersects[0],
-                            second:bRoutes
-                        });
+                    var route=({
+                        type:"double",
+                        first:aRoutes,
+                        firstInterval:uniqueIntersects[i].intersects[0],
+                        second:bRoutes
+                    });
 
-                        doubles.push(route);
-                        results.push(route);
-                    }
+                    doubles.push(route);
+                    results.push(route);
                 }
+            }
 
-                if(doubles.length>0){
+            if(doubles.length>0){
 //                    results.push(doubles);
-                }else{
-                    //triple route checking
-                    for(var i=0;i<aLocations.length;i++){
-                        var aTransition=aLocations[i];
+            }else{
+                //triple route checking
+                for(var i=0;i<aLocations.length;i++){
+                    var aTransition=aLocations[i];
 
-                        if(aTransition==start)continue;
+                    if(aTransition==start)continue;
 
-                        var atLocations=utils.getPointsThatGoFrom(aTransition);
-                        var intersects=_.intersection(atLocations,bLocations);
+                    var atLocations=utils.getPointsThatGoFrom(aTransition);
+                    var intersects=_.intersection(atLocations,bLocations);
 
-                        if(intersects.length>0){
-                            var aRoutes=utils.getRoutesThatPassThroughPoints(start,aTransition);
-                            var atRoutes=utils.getRoutesThatPassThroughPoints(aTransition,intersects[0]);
-                            var bRoutes=utils.getRoutesThatPassThroughPoints(end,intersects[0]);
+                    if(intersects.length>0){
 
+                        (function(){
+                            var uniqueIntersects=utils.getUniqueIntersects(aTransition,end,intersects);
 
-                            var route=({
-                                type:"triple",
-                                first:aRoutes,
-                                firstInterval:aTransition,
-                                second:atRoutes,
-                                secondInterval:intersects[0],
-                                third:bRoutes
-                            });
+                            for(var i=0;i<uniqueIntersects.length;i++){
+                                var atRoutes=uniqueIntersects[i].initial;
+                                var bRoutes=uniqueIntersects[i].final;
+
+                                var atARoutes=uniqueIntersects[i].initial;
+                                var bRoutes=uniqueIntersects[i].final;
+                                var route=({
+                                    type:"triple",
+                                    first:utils.getRoutesThatPassThroughPoints(start,aTransition),
+                                    firstInterval:aTransition,
+                                    second:atRoutes,
+                                    secondInterval:uniqueIntersects[i].intersects[0],
+                                    third:bRoutes
+                                });
 
 //                            doubles.push(route);
                             results.push(route);
-                            break;
-                        }
+//                                console.log("found",route);;
+                            }
+                        })();
+                        utils.removeDuplicateRotues(results);
+//                        var aRoutes=utils.getRoutesThatPassThroughPoints(start,aTransition);
+//                        var atRoutes=utils.getRoutesThatPassThroughPoints(aTransition,intersects[0]);
+//                        var bRoutes=utils.getRoutesThatPassThroughPoints(end,intersects[0]);
+//
+//                        var route=({
+//                            type:"triple",
+//                            first:aRoutes,
+//                            firstInterval:aTransition,
+//                            second:atRoutes,
+//                            secondInterval:intersects[0],
+//                            third:bRoutes
+//                        });
 
-
+//                            doubles.push(route);
+//                        results.push(route);
                     }
-                }
 
+
+                }
             }
-        }else{
-            //start and end places are the same. The user has to walk. Sorry user, the destination is nearby!
-            return [];
+
         }
 
         var parse= parseResult(results);

@@ -6,6 +6,8 @@ var location=require("./location");
 var _=require("underscore");
 var config=require("../config");
 
+var utils=module.exports;
+
 module.exports.distanceBetween=function(a,b){
     if(! (a instanceof Object)) a=location.getById(a);
     if(! (b instanceof Object)) b=location.getById(b);
@@ -158,8 +160,6 @@ module.exports.sameRouteArrays=function(a,b){
 }
 
 module.exports.getUniqueIntersects=function(start,end,intersects){
-    var utils=module.exports;
-
     //create bundle of unique intersection points
     var uniqueIntersects=[];
     for(var i=0;i<intersects.length;i++){
@@ -194,13 +194,7 @@ module.exports.getUniqueIntersects=function(start,end,intersects){
     return uniqueIntersects;
 }
 
-module.exports.decodeMysqlString=function(str){
-    if(str && typeof str === 'string') {
-        // strip script/html tags
-        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-    }
+utils.removeDuplicateRotues=function(results){
 
-
-    return str;
+    return results;
 }
