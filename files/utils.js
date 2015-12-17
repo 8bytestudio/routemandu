@@ -198,3 +198,32 @@ utils.removeDuplicateRotues=function(results){
 
     return results;
 }
+
+utils.sortRoutesByDistance=function(routes){
+    //Add distance factor to each route
+    routes.forEach(function(route){
+        route.distance=route.distance || 0;
+
+        route.steps.forEach(function(step){
+            route.distance += step.realDistance;
+        })
+
+    });
+
+    //sort them
+    routes=_.sortBy(routes,function(route){return route.distance;});
+
+    return routes;
+}
+
+utils.removeUnnecessaryInfo=function(result){
+    result.forEach(function(route){
+        route.steps.forEach(function(step){
+            step.locations.forEach(function(location){
+                delete location.district;
+            })
+        })
+    })
+    return result;
+
+}

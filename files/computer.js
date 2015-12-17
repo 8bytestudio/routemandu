@@ -181,7 +181,6 @@ module.exports=(function(){
             if(item_raw.type=="single"){
                 var items=getParsingChainItem(item_raw.routes);
 
-
                 for(var x=0;x<items.length;x++){
 
                     output.push(
@@ -207,7 +206,6 @@ module.exports=(function(){
                         item_raw.second,
                         item_raw.firstInterval,
                         item_raw.secondInterval);
-
                     thirds=getParsingChainItem(
                         item_raw.third,
                         item_raw.secondInterval,
@@ -221,7 +219,10 @@ module.exports=(function(){
 
                         }else{
                             thirds.forEach(function(third){
-                                output.push(createFinalRouteData(addColorsToChain(addWalkingStepsToChain([first,second,third]))));
+                                output.push(
+                                    createFinalRouteData(
+                                        addColorsToChain(
+                                            addWalkingStepsToChain([first,second,third]))));
                             })
                         }
                     })
@@ -230,8 +231,8 @@ module.exports=(function(){
             }
         }
 
-
-        return output;
+        return utils.sortRoutesByDistance(
+            utils.removeUnnecessaryInfo(output));
 
     }
 
@@ -298,6 +299,7 @@ module.exports=(function(){
 
                     if(intersects.length>0){
 
+                        //third routes calculator.Kept in a separate namespace to alter scope.
                         (function(){
                             var uniqueIntersects=utils.getUniqueIntersects(aTransition,end,intersects);
 
@@ -316,12 +318,12 @@ module.exports=(function(){
                                     third:bRoutes
                                 });
 
-//                            doubles.push(route);
+//                            triples.push(route);
                             results.push(route);
 //                                console.log("found",route);;
                             }
                         })();
-                        utils.removeDuplicateRotues(results);
+
 //                        var aRoutes=utils.getRoutesThatPassThroughPoints(start,aTransition);
 //                        var atRoutes=utils.getRoutesThatPassThroughPoints(aTransition,intersects[0]);
 //                        var bRoutes=utils.getRoutesThatPassThroughPoints(end,intersects[0]);
@@ -344,6 +346,7 @@ module.exports=(function(){
             }
 
         }
+        results=utils.removeDuplicateRotues(results);
 
         var parse= parseResult(results);
         console.log("calibration complete");
