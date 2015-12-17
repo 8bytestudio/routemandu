@@ -39,8 +39,15 @@ module.exports=(function(){
                 if(err) {
                     return console.log(err);
                 }
-
             });
+
+            fs.appendFile("output/data-usage.txt",JSON.stringify(result).length+"\n",function(err){
+                if(err){
+                    return console.log(err);
+                }
+
+                console.log("success");
+            })
 
             res.send(result);
         });
@@ -72,29 +79,71 @@ module.exports=(function(){
         })
 
         app.get("/stats",function(req,res){
+
+            var output={};
+
+            //elapsed time
             fs.readFile('output/eta.txt', 'utf8', function (err,data) {
                 if (err) {
                     return console.log(err,"error");
                 }
-                data=data.replace("\n"," ").replace("\n","").split(" ");
-                var sum=0;
-                var count=0;
 
-                data.forEach(function(d){
-                    if(! d)return;
-                    d=parseInt(d);
-                    if(! d) return;
+                //elapsed time namespace
+                (function(){
+                    data=data.replace("\n"," ").replace("\n","").split(" ");
+                    var sum=0;
+                    var count=0;
 
-                    count ++;
-                    sum += d;
+                    data.forEach(function(d){
+                        if(! d)return;
+                        d=parseInt(d);
+                        if(! d) return;
+
+                        count ++;
+                        sum += d;
+                    })
+
+                    output.elapsed={
+                        sum:sum,
+                        count:count,
+                        avg:sum/count,
+                    };
+                })();
+
+
+                fs.readFile('output/data-usage.txt', 'utf8', function (err,data) {
+                    if (err) {
+                        return console.log(err, "error");
+                    }
+
+                    (function(){
+                        data=data.split("\n");
+
+                        var sum=0;
+                        var count=0;
+
+                        data.forEach(function(d){
+                            if(! d)return;
+                            d=parseInt(d.trim());
+                            if(! d) return;
+
+                            count++;
+                            sum += d;
+                        })
+
+                        output.usage={
+                            sum:sum,
+                            count:count,
+                            avg:sum/count,
+                        };
+
+                    })();
+
+
+                    res.send(output);
                 })
 
 
-                res.send({
-                    sum:sum,
-                    count:count,
-                    avg:sum/count,
-                });
             });
         })
 

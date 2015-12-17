@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bb3f08d-0bba-4add-aa0f-1feb9ebd17a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/computer.js" afterPath="$PROJECT_DIR$/files/computer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/utils.js" afterPath="$PROJECT_DIR$/files/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/server.js" afterPath="$PROJECT_DIR$/files/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="roadway-api.iws" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="computer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/files/computer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1132" max-vertical-offset="3465">
-              <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1177" max-vertical-offset="3465">
+              <caret line="252" column="31" selection-start-line="252" selection-start-column="31" selection-end-line="252" selection-end-column="31" />
               <folding>
                 <element signature="e#0#38#0" expanded="false" />
                 <element signature="e#395#500#0" expanded="false" />
@@ -60,12 +59,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/files/utils.js">
+      <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/files/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6258503" vertical-offset="2979" max-vertical-offset="3510">
-              <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.79591835" vertical-offset="444" max-vertical-offset="1140">
+              <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#38#0" expanded="false" />
+                <element signature="e#518#1460#0" expanded="false" />
+                <element signature="e#542#669#0" expanded="false" />
+                <element signature="e#691#814#0" expanded="false" />
+                <element signature="e#1068#1172#0" expanded="false" />
+                <element signature="e#1094#1158#0" expanded="false" />
+                <element signature="e#1274#1418#0" expanded="false" />
+                <element signature="e#1299#1363#0" expanded="false" />
+                <element signature="e#1510#1726#0" expanded="false" />
+                <element signature="e#1606#1653#0" expanded="false" />
+                <element signature="e#1668#1715#0" expanded="false" />
+                <element signature="e#1780#2351#0" expanded="false" />
+                <element signature="e#2024#2339#0" expanded="false" />
+                <element signature="e#2072#2237#0" expanded="false" />
+                <element signature="e#2551#2623#0" expanded="false" />
+                <element signature="e#2693#3280#0" expanded="false" />
+                <element signature="e#2881#3091#0" expanded="false" />
+                <element signature="e#3129#3261#0" expanded="false" />
+                <element signature="e#3399#3480#0" expanded="false" />
+                <element signature="e#3964#4112#0" expanded="false" />
+                <element signature="e#4287#4470#0" expanded="false" />
+                <element signature="e#4490#4551#0" expanded="false" />
+                <element signature="e#4515#4545#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,10 +118,11 @@
         <option value="$PROJECT_DIR$/files/fetchRoutes.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/output/eta.txt" />
-        <option value="$PROJECT_DIR$/files/server.js" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/files/computer.js" />
         <option value="$PROJECT_DIR$/files/utils.js" />
+        <option value="$PROJECT_DIR$/output/data-usage.txt" />
+        <option value="$PROJECT_DIR$/files/server.js" />
       </list>
     </option>
   </component>
@@ -149,6 +173,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="roadway-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roadway-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roadway-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="output" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -385,7 +423,11 @@
       <created>1450317027698</created>
       <updated>1450317027698</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="third route improvement, output data improvement">
+      <created>1450318187875</created>
+      <updated>1450318187875</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -469,7 +511,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="init working" />
     <MESSAGE value="finish initializing" />
     <MESSAGE value="created working server" />
     <MESSAGE value="finish single_route" />
@@ -494,7 +535,8 @@
     <MESSAGE value="made avg reader" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="improved triple route filtering algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved triple route filtering algorithm" />
+    <MESSAGE value="third route improvement, output data improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="third route improvement, output data improvement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -747,26 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46031746" vertical-offset="607" max-vertical-offset="1290">
-          <caret line="77" column="17" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-            <element signature="e#542#669#0" expanded="false" />
-            <element signature="e#691#814#0" expanded="false" />
-            <element signature="e#1266#1482#0" expanded="false" />
-            <element signature="e#1362#1409#0" expanded="false" />
-            <element signature="e#1424#1471#0" expanded="false" />
-            <element signature="e#1780#2095#0" expanded="false" />
-            <element signature="e#1828#1993#0" expanded="false" />
-            <element signature="e#2913#3096#0" expanded="false" />
-            <element signature="e#3116#3177#0" expanded="false" />
-            <element signature="e#3141#3171#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/output/eta.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06802721" vertical-offset="0" max-vertical-offset="441">
@@ -789,10 +811,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/files/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6258503" vertical-offset="2979" max-vertical-offset="3510">
+          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/files/computer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1132" max-vertical-offset="3465">
-          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1177" max-vertical-offset="3465">
+          <caret line="252" column="31" selection-start-line="252" selection-start-column="31" selection-end-line="252" selection-end-column="31" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
             <element signature="e#395#500#0" expanded="false" />
@@ -820,11 +850,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/utils.js">
+    <entry file="file://$PROJECT_DIR$/output/data-usage.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6258503" vertical-offset="2979" max-vertical-offset="3510">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.17006803" vertical-offset="0" max-vertical-offset="441">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79591835" vertical-offset="444" max-vertical-offset="1140">
+          <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+            <element signature="e#518#1460#0" expanded="false" />
+            <element signature="e#542#669#0" expanded="false" />
+            <element signature="e#691#814#0" expanded="false" />
+            <element signature="e#1068#1172#0" expanded="false" />
+            <element signature="e#1094#1158#0" expanded="false" />
+            <element signature="e#1274#1418#0" expanded="false" />
+            <element signature="e#1299#1363#0" expanded="false" />
+            <element signature="e#1510#1726#0" expanded="false" />
+            <element signature="e#1606#1653#0" expanded="false" />
+            <element signature="e#1668#1715#0" expanded="false" />
+            <element signature="e#1780#2351#0" expanded="false" />
+            <element signature="e#2024#2339#0" expanded="false" />
+            <element signature="e#2072#2237#0" expanded="false" />
+            <element signature="e#2551#2623#0" expanded="false" />
+            <element signature="e#2693#3280#0" expanded="false" />
+            <element signature="e#2881#3091#0" expanded="false" />
+            <element signature="e#3129#3261#0" expanded="false" />
+            <element signature="e#3399#3480#0" expanded="false" />
+            <element signature="e#3964#4112#0" expanded="false" />
+            <element signature="e#4287#4470#0" expanded="false" />
+            <element signature="e#4490#4551#0" expanded="false" />
+            <element signature="e#4515#4545#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
