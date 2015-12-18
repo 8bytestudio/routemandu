@@ -18,7 +18,6 @@ var end=0;
 var realStart=null;
 var realEnd=null;
 module.exports=(function(){
-
     var createRoutesFromPlain=function(ps){
         for(var i=0;i<ps.length;i++){
             _routes.push(new Route_class(ps[i]));
@@ -65,6 +64,11 @@ module.exports=(function(){
             data.type="vehicle";
             data.distance=utils.calculateDistanceFriendly(data.locations)
             data.realDistance=utils.calculateDistance(data.locations)
+
+            if(! data.locations[0] && false){
+                console.log(data.locations[0],"hi");
+                console.log(bundle,from,to);
+            };
             data.direction=data.locations[0].name+" -> "+ _.last(data.locations).name;
 
             data.start=location.getById(from);
@@ -90,6 +94,24 @@ module.exports=(function(){
 
                 data.vehicles[x].direction= _.last(data.locations).name+" on "+data.vehicles[x].name;
             }
+
+            var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
+
+
+            for(var x=0;x<data.locations.length;x++){
+                var loc=data.locations[i];
+
+                if(aLat>loc.latitude)aLat=loc.latitude;
+                if(bLat<loc.latitude)bLat=loc.latitude;
+
+                if(aLng>loc.longitude)aLng=loc.longitude;
+                if(bLng<loc.longitude)bLng=loc.longitude;
+            }
+
+            data.zoom=[
+                {latitude:aLat,longitude:aLng},
+                {latitude:bLat,longitude:bLng}
+            ]
 
             ret.push(data);
         }
@@ -140,34 +162,39 @@ module.exports=(function(){
     }
 
     var createFinalRouteData=function(chain){
-        var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
-
         var data= {
             steps:chain,
             info:utils.generateChainTitle(chain),
             zoom:[{},{}]
         }
 
-        for(var i=0;i<chain.length;i++){
-            for(var x=0;x<chain[i].locations.length;x++){
-                var location=chain[i].locations[x];
 
-                if(aLat>location.latitude)aLat=location.latitude;
-                if(bLat<location.latitude)bLat=location.latitude;
+            console.log("HI");
+            var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
 
-                if(aLng>location.longitude)aLng=location.longitude;
-                if(bLng<location.longitude)bLng=location.longitude;
+            for(var i=0;i<chain.length;i++){
+                for(var x=0;x<chain[i].locations.length;x++){
+                    var location=chain[i].locations[x];
+
+                    if(aLat>location.latitude)aLat=location.latitude;
+                    if(bLat<location.latitude)bLat=location.latitude;
+
+                    if(aLng>location.longitude)aLng=location.longitude;
+                    if(bLng<location.longitude)bLng=location.longitude;
+                }
             }
-        }
-        data.zoom=[
-            {latitude:aLat,longitude:aLng},
-            {latitude:bLat,longitude:bLng}
-        ]
+
+            data.zoom=[
+                {latitude:aLat,longitude:aLng},
+                {latitude:bLat,longitude:bLng}
+            ]
+
+
         data.availability={
             from:5*60,
             to:(8+12)*60
         }
-
+        data.type=data.steps.length-2;
         data.availability.info="From 5 AM to 8 PM";
         return data;
 
@@ -206,6 +233,7 @@ module.exports=(function(){
                         item_raw.second,
                         item_raw.firstInterval,
                         item_raw.secondInterval);
+
                     thirds=getParsingChainItem(
                         item_raw.third,
                         item_raw.secondInterval,
@@ -246,7 +274,7 @@ module.exports=(function(){
         end=location.getNearestLocationFrom(to).ID;
         delete from,to;
 
-        if(! (start && end)) return {};
+        if(! (start && end)) return [];
 
         var results=[];
         if(start==end) return [];
@@ -255,74 +283,76 @@ module.exports=(function(){
 
         if(singles.length>0){
             results.push({type:"single",routes:singles});
-        }else{
-            //double route checking
+        }
 
-            var doubles=[];
+        //double route checking
 
-            var aLocations=utils.getPointsThatGoFrom(start);
-            var bLocations=utils.getPointsThatGoFrom(end);
+        var doubles=[];
 
-            var intersects=_.intersection(aLocations,bLocations);
+        var aLocations=utils.getPointsThatGoFrom(start);
+        var bLocations=utils.getPointsThatGoFrom(end);
 
-            if(intersects.length>0){
+        var intersects=_.intersection(aLocations,bLocations);
 
-                var uniqueIntersects=utils.getUniqueIntersects(start,end,intersects);
+        if(intersects.length>0){
 
-                for(var i=0;i<uniqueIntersects.length;i++){
-                    var aRoutes=uniqueIntersects[i].initial;
-                    var bRoutes=uniqueIntersects[i].final;
+            var uniqueIntersects=utils.getUniqueIntersects(start,end,intersects);
 
-                    var route=({
-                        type:"double",
-                        first:aRoutes,
-                        firstInterval:uniqueIntersects[i].intersects[0],
-                        second:bRoutes
-                    });
+            for(var i=0;i<uniqueIntersects.length;i++){
+                var aRoutes=uniqueIntersects[i].initial;
+                var bRoutes=uniqueIntersects[i].final;
 
-                    doubles.push(route);
-                    results.push(route);
-                }
+                var route=({
+                    type:"double",
+                    first:aRoutes,
+                    firstInterval:uniqueIntersects[i].intersects[0],
+                    second:bRoutes
+                });
+
+                doubles.push(route);
+                results.push(route);
             }
+        }
 
-            if(doubles.length>0){
+        if(singles.length>0 || doubles.length>0){
 //                    results.push(doubles);
-            }else{
-                //triple route checking
-                for(var i=0;i<aLocations.length;i++){
-                    var aTransition=aLocations[i];
+        }else{
+            //triple route checking
+            for(var i=0;i<aLocations.length;i++){
+                var aTransition=aLocations[i];
 
-                    if(aTransition==start)continue;
+                if(aTransition==start)continue;
 
-                    var atLocations=utils.getPointsThatGoFrom(aTransition);
-                    var intersects=_.intersection(atLocations,bLocations);
+                var atLocations=utils.getPointsThatGoFrom(aTransition);
+                var intersects=_.intersection(atLocations,bLocations);
 
-                    if(intersects.length>0){
+                if(intersects.length>0){
 
-                        //third routes calculator.Kept in a separate namespace to alter scope.
-                        (function(){
-                            var uniqueIntersects=utils.getUniqueIntersects(aTransition,end,intersects);
+                    //third routes calculator.Kept in a separate namespace to alter scope.
+                    (function(){
+                        var uniqueIntersects=utils.getUniqueIntersects(aTransition,end,intersects);
 
-                            for(var i=0;i<uniqueIntersects.length;i++){
-                                var atRoutes=uniqueIntersects[i].initial;
-                                var bRoutes=uniqueIntersects[i].final;
+                        for(var i=0;i<uniqueIntersects.length;i++){
+                            var atRoutes=uniqueIntersects[i].initial;
+                            var bRoutes=uniqueIntersects[i].final;
 
-                                var atARoutes=uniqueIntersects[i].initial;
-                                var bRoutes=uniqueIntersects[i].final;
-                                var route=({
-                                    type:"triple",
-                                    first:utils.getRoutesThatPassThroughPoints(start,aTransition),
-                                    firstInterval:aTransition,
-                                    second:atRoutes,
-                                    secondInterval:uniqueIntersects[i].intersects[0],
-                                    third:bRoutes
-                                });
+                            var atARoutes=uniqueIntersects[i].initial;
+                            var bRoutes=uniqueIntersects[i].final;
 
-//                            triples.push(route);
+                            if(start==aTransition)continue;
+
+
+                            var route=({
+                                type:"triple",
+                                first:utils.getRoutesThatPassThroughPoints(start,aTransition),
+                                firstInterval:aTransition,
+                                second:atRoutes,
+                                secondInterval:uniqueIntersects[i].intersects[0],
+                                third:bRoutes
+                            });
                             results.push(route);
-//                                console.log("found",route);;
-                            }
-                        })();
+                        }
+                    })();
 
 //                        var aRoutes=utils.getRoutesThatPassThroughPoints(start,aTransition);
 //                        var atRoutes=utils.getRoutesThatPassThroughPoints(aTransition,intersects[0]);
@@ -339,14 +369,12 @@ module.exports=(function(){
 
 //                            doubles.push(route);
 //                        results.push(route);
-                    }
-
-
                 }
             }
-
         }
-        results=utils.removeDuplicateRotues(results);
+
+
+        results=utils.removeDuplicateRotues(results,start,end);
 
         var parse= parseResult(results);
         console.log("calibration complete");

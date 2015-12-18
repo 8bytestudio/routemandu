@@ -194,9 +194,45 @@ module.exports.getUniqueIntersects=function(start,end,intersects){
     return uniqueIntersects;
 }
 
-utils.removeDuplicateRotues=function(results){
+utils.removeDuplicateRotues=function(results,start,end){
+    console.log("call");
 
-    return results;
+    var ret=[];
+
+    results.forEach(function(route){
+        if(route.type=="single") {
+            ret.push(route);
+        }else if(route.type=="double"){
+            ret.push(route)
+
+        }else{
+            if(route.firstInterval==route.secondInterval)return;
+
+            if(route.firstInterval==start)return;
+            if(route.secondInterval==end)return;
+            if(route.firstInterval==end)return;
+            if(route.secondInterval==start)return;
+
+            for(var i=0;i<route.first.length;i++){
+
+                if(route.first[i].goesThroughLocations(end) || route.first[i].goesThroughLocations(route.secondInterval)){
+//                    console.log("YES");
+                    return;
+                }
+            }
+
+            for(var i=0;i<route.third.length;i++){
+                if(route.third[i].goesThroughLocations(start) || route.third[i].goesThroughLocations(route.firstInterval)){
+//                    console.log("YES1");
+                    return;
+                }
+            }
+
+
+            ret.push(route);
+        }
+    })
+    return ret;
 }
 
 utils.sortRoutesByDistance=function(routes){
