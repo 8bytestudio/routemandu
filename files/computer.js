@@ -91,24 +91,6 @@ module.exports=(function(){
                 data.vehicles[x].direction= _.last(data.locations).name+" on "+data.vehicles[x].name;
             }
 
-            var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
-
-
-            for(var x=0;x<data.locations.length;x++){
-                var loc=data.locations[i];
-
-                if(aLat>loc.latitude)aLat=loc.latitude;
-                if(bLat<loc.latitude)bLat=loc.latitude;
-
-                if(aLng>loc.longitude)aLng=loc.longitude;
-                if(bLng<loc.longitude)bLng=loc.longitude;
-            }
-
-            data.zoom=[
-                {latitude:aLat,longitude:aLng},
-                {latitude:bLat,longitude:bLng}
-            ]
-
             ret.push(data);
         }
 
@@ -164,8 +146,6 @@ module.exports=(function(){
             zoom:[{},{}]
         }
 
-
-        console.log("HI");
         var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
 
         for(var i=0;i<chain.length;i++){
@@ -185,6 +165,25 @@ module.exports=(function(){
             {latitude:bLat,longitude:bLng}
         ]
 
+        data.steps.forEach(function(step){
+            var aLat=10000,aLng=100000,bLat=1,bLng=1;//a minimum, b maximum
+
+            for(var x=0;x<step.locations.length;x++){
+                var location=step.locations[x];
+
+                if(aLat>location.latitude)aLat=location.latitude;
+                if(bLat<location.latitude)bLat=location.latitude;
+
+                if(aLng>location.longitude)aLng=location.longitude;
+                if(bLng<location.longitude)bLng=location.longitude;
+            }
+
+            step.zoom=[
+                {latitude:aLat,longitude:aLng},
+                {latitude:bLat,longitude:bLng}
+            ]
+
+        })
 
         data.availability={
             from:5*60,
