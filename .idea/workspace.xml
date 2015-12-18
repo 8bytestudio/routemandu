@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bb3f08d-0bba-4add-aa0f-1feb9ebd17a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/server.js" afterPath="$PROJECT_DIR$/files/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="roadway-api.iws" />
@@ -106,8 +105,8 @@
       <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/files/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43556282" vertical-offset="78" max-vertical-offset="1800">
-              <caret line="25" column="141" selection-start-line="25" selection-start-column="141" selection-end-line="25" selection-end-column="141" />
+            <state vertical-scroll-proportion="0.8026101" vertical-offset="78" max-vertical-offset="1800">
+              <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
               <folding>
                 <element signature="e#0#38#0" expanded="false" />
                 <element signature="e#1383#2325#0" expanded="false" />
@@ -476,7 +475,11 @@
       <created>1450454405276</created>
       <updated>1450454405276</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="added all emails">
+      <created>1450454575436</created>
+      <updated>1450454575436</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -560,7 +563,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="working on single vehicle" />
     <MESSAGE value="double route complete" />
     <MESSAGE value="ETA, price etc" />
     <MESSAGE value="bug fixes" />
@@ -585,7 +587,8 @@
     <MESSAGE value="added nodemailer" />
     <MESSAGE value="email bug fix" />
     <MESSAGE value="amit dai email add" />
-    <option name="LAST_COMMIT_MESSAGE" value="amit dai email add" />
+    <MESSAGE value="added all emails" />
+    <option name="LAST_COMMIT_MESSAGE" value="added all emails" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1240,8 +1243,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/files/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43556282" vertical-offset="78" max-vertical-offset="1800">
-          <caret line="25" column="141" selection-start-line="25" selection-start-column="141" selection-end-line="25" selection-end-column="141" />
+        <state vertical-scroll-proportion="0.8026101" vertical-offset="78" max-vertical-offset="1800">
+          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
             <element signature="e#1383#2325#0" expanded="false" />
