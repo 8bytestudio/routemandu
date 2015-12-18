@@ -6,6 +6,7 @@ var config=require("../config");
 var bodyParser=require("body-parser");
 var mysqlHandler=require("./mysqlHandler");
 var fs=require("fs");
+var nodemailer = require('nodemailer');
 
 var app=express();
 
@@ -16,6 +17,25 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 module.exports=(function(){
+    var sendEmail=function(msg){
+        var transporter = nodemailer.createTransport();
+
+        var mailOptions = {
+            from: 'Backend Support✔ <backend@8bytestudio.com>', // sender address
+            to: 'hi@8bytestudio.com', // list of receivers
+            subject: 'Hello fuckers', // Subject line
+            text: msg, // plaintext body
+        };
+
+// send mail with defined transport object
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                return console.log(error);
+            }
+            console.log('Message sent: ' + info.response);
+        });
+    }
+
     var run=function(){
         var computer=require("./computer");
 
@@ -59,6 +79,8 @@ module.exports=(function(){
             },function(data){
                 res.send(data);
             })
+
+            sendEmail(req.body);
         });
 
         app.get('/feedback/show',function(req,res){
@@ -146,6 +168,7 @@ module.exports=(function(){
 
             });
         })
+
 
         var server = app.listen(config.port, function () {
             var host = server.address().address;
