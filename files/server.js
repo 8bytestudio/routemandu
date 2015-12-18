@@ -21,13 +21,12 @@ module.exports=(function(){
         var transporter = nodemailer.createTransport();
 
         var mailOptions = {
-            from: 'Backend Support✔ <backend@8bytestudio.com>', // sender address
+            from: 'Backend Support ✔ <backend@8bytestudio.com>', // sender address
             to: 'hi@8bytestudio.com', // list of receivers
             subject: 'Hello fuckers', // Subject line
             text: msg, // plaintext body
         };
 
-// send mail with defined transport object
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
                 return console.log(error);
