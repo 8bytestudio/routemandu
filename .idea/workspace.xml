@@ -107,22 +107,22 @@
         <entry file="file://$PROJECT_DIR$/files/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.411093" vertical-offset="93" max-vertical-offset="1800">
-              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+              <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
               <folding>
                 <element signature="e#0#38#0" expanded="false" />
-                <element signature="e#1282#2224#0" expanded="false" />
-                <element signature="e#1306#1433#0" expanded="false" />
-                <element signature="e#1455#1578#0" expanded="false" />
-                <element signature="e#1832#1936#0" expanded="false" />
-                <element signature="e#1858#1922#0" expanded="false" />
-                <element signature="e#2038#2182#0" expanded="false" />
-                <element signature="e#2063#2127#0" expanded="false" />
-                <element signature="e#3495#4082#0" expanded="false" />
-                <element signature="e#3683#3893#0" expanded="false" />
-                <element signature="e#3931#4063#0" expanded="false" />
-                <element signature="e#4315#4938#0" expanded="false" />
-                <element signature="e#4486#4726#0" expanded="false" />
-                <element signature="e#4766#4914#0" expanded="false" />
+                <element signature="e#1306#2248#0" expanded="false" />
+                <element signature="e#1330#1457#0" expanded="false" />
+                <element signature="e#1479#1602#0" expanded="false" />
+                <element signature="e#1856#1960#0" expanded="false" />
+                <element signature="e#1882#1946#0" expanded="false" />
+                <element signature="e#2062#2206#0" expanded="false" />
+                <element signature="e#2087#2151#0" expanded="false" />
+                <element signature="e#3519#4106#0" expanded="false" />
+                <element signature="e#3707#3917#0" expanded="false" />
+                <element signature="e#3955#4087#0" expanded="false" />
+                <element signature="e#4339#4962#0" expanded="false" />
+                <element signature="e#4510#4750#0" expanded="false" />
+                <element signature="e#4790#4938#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -468,7 +468,11 @@
       <created>1450451796653</created>
       <updated>1450451796653</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="email bug fix">
+      <created>1450454265254</created>
+      <updated>1450454265254</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -552,7 +556,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="finish single_route" />
     <MESSAGE value="working basic API" />
     <MESSAGE value="working on single vehicle" />
     <MESSAGE value="double route complete" />
@@ -577,7 +580,8 @@
     <MESSAGE value="showing usuage stats too" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="added nodemailer" />
-    <option name="LAST_COMMIT_MESSAGE" value="added nodemailer" />
+    <MESSAGE value="email bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="email bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,22 +1237,22 @@
     <entry file="file://$PROJECT_DIR$/files/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.411093" vertical-offset="93" max-vertical-offset="1800">
-          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
-            <element signature="e#1282#2224#0" expanded="false" />
-            <element signature="e#1306#1433#0" expanded="false" />
-            <element signature="e#1455#1578#0" expanded="false" />
-            <element signature="e#1832#1936#0" expanded="false" />
-            <element signature="e#1858#1922#0" expanded="false" />
-            <element signature="e#2038#2182#0" expanded="false" />
-            <element signature="e#2063#2127#0" expanded="false" />
-            <element signature="e#3495#4082#0" expanded="false" />
-            <element signature="e#3683#3893#0" expanded="false" />
-            <element signature="e#3931#4063#0" expanded="false" />
-            <element signature="e#4315#4938#0" expanded="false" />
-            <element signature="e#4486#4726#0" expanded="false" />
-            <element signature="e#4766#4914#0" expanded="false" />
+            <element signature="e#1306#2248#0" expanded="false" />
+            <element signature="e#1330#1457#0" expanded="false" />
+            <element signature="e#1479#1602#0" expanded="false" />
+            <element signature="e#1856#1960#0" expanded="false" />
+            <element signature="e#1882#1946#0" expanded="false" />
+            <element signature="e#2062#2206#0" expanded="false" />
+            <element signature="e#2087#2151#0" expanded="false" />
+            <element signature="e#3519#4106#0" expanded="false" />
+            <element signature="e#3707#3917#0" expanded="false" />
+            <element signature="e#3955#4087#0" expanded="false" />
+            <element signature="e#4339#4962#0" expanded="false" />
+            <element signature="e#4510#4750#0" expanded="false" />
+            <element signature="e#4790#4938#0" expanded="false" />
           </folding>
         </state>
       </provider>
