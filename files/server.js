@@ -23,7 +23,7 @@ module.exports=(function(){
         var f=JSON.parse(msg.params);
         var mailOptions = {
             from: 'Backend Support ✔ <backend@8bytestudio.com>', // sender addr$
-            to: 'underscoredam@gmail.com, amitbista119@gmail.com', // list of receivers
+            to: 'underscoredam@gmail.com, amitbista119@gmail.com, chakradhar.susan@gmail.com, suman.timalsina9@gmail.com, bookbipii@gmail.com', // list of receivers
             subject: 'New feedback received', // Subject line
             text: "text", // plaintext body
             html:"<tag>"+f.message+"</tag>"

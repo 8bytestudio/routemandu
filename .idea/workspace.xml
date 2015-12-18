@@ -106,23 +106,23 @@
       <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/files/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.411093" vertical-offset="93" max-vertical-offset="1800">
-              <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.43556282" vertical-offset="78" max-vertical-offset="1800">
+              <caret line="25" column="141" selection-start-line="25" selection-start-column="141" selection-end-line="25" selection-end-column="141" />
               <folding>
                 <element signature="e#0#38#0" expanded="false" />
-                <element signature="e#1306#2248#0" expanded="false" />
-                <element signature="e#1330#1457#0" expanded="false" />
-                <element signature="e#1479#1602#0" expanded="false" />
-                <element signature="e#1856#1960#0" expanded="false" />
-                <element signature="e#1882#1946#0" expanded="false" />
-                <element signature="e#2062#2206#0" expanded="false" />
-                <element signature="e#2087#2151#0" expanded="false" />
-                <element signature="e#3519#4106#0" expanded="false" />
-                <element signature="e#3707#3917#0" expanded="false" />
-                <element signature="e#3955#4087#0" expanded="false" />
-                <element signature="e#4339#4962#0" expanded="false" />
-                <element signature="e#4510#4750#0" expanded="false" />
-                <element signature="e#4790#4938#0" expanded="false" />
+                <element signature="e#1383#2325#0" expanded="false" />
+                <element signature="e#1407#1534#0" expanded="false" />
+                <element signature="e#1556#1679#0" expanded="false" />
+                <element signature="e#1933#2037#0" expanded="false" />
+                <element signature="e#1959#2023#0" expanded="false" />
+                <element signature="e#2139#2283#0" expanded="false" />
+                <element signature="e#2164#2228#0" expanded="false" />
+                <element signature="e#3596#4183#0" expanded="false" />
+                <element signature="e#3784#3994#0" expanded="false" />
+                <element signature="e#4032#4164#0" expanded="false" />
+                <element signature="e#4416#5039#0" expanded="false" />
+                <element signature="e#4587#4827#0" expanded="false" />
+                <element signature="e#4867#5015#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -472,7 +472,11 @@
       <created>1450454265254</created>
       <updated>1450454265254</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="amit dai email add">
+      <created>1450454405276</created>
+      <updated>1450454405276</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -556,7 +560,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="working basic API" />
     <MESSAGE value="working on single vehicle" />
     <MESSAGE value="double route complete" />
     <MESSAGE value="ETA, price etc" />
@@ -581,7 +584,8 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="added nodemailer" />
     <MESSAGE value="email bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="email bug fix" />
+    <MESSAGE value="amit dai email add" />
+    <option name="LAST_COMMIT_MESSAGE" value="amit dai email add" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1236,23 +1240,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/files/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.411093" vertical-offset="93" max-vertical-offset="1800">
-          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.43556282" vertical-offset="78" max-vertical-offset="1800">
+          <caret line="25" column="141" selection-start-line="25" selection-start-column="141" selection-end-line="25" selection-end-column="141" />
           <folding>
             <element signature="e#0#38#0" expanded="false" />
-            <element signature="e#1306#2248#0" expanded="false" />
-            <element signature="e#1330#1457#0" expanded="false" />
-            <element signature="e#1479#1602#0" expanded="false" />
-            <element signature="e#1856#1960#0" expanded="false" />
-            <element signature="e#1882#1946#0" expanded="false" />
-            <element signature="e#2062#2206#0" expanded="false" />
-            <element signature="e#2087#2151#0" expanded="false" />
-            <element signature="e#3519#4106#0" expanded="false" />
-            <element signature="e#3707#3917#0" expanded="false" />
-            <element signature="e#3955#4087#0" expanded="false" />
-            <element signature="e#4339#4962#0" expanded="false" />
-            <element signature="e#4510#4750#0" expanded="false" />
-            <element signature="e#4790#4938#0" expanded="false" />
+            <element signature="e#1383#2325#0" expanded="false" />
+            <element signature="e#1407#1534#0" expanded="false" />
+            <element signature="e#1556#1679#0" expanded="false" />
+            <element signature="e#1933#2037#0" expanded="false" />
+            <element signature="e#1959#2023#0" expanded="false" />
+            <element signature="e#2139#2283#0" expanded="false" />
+            <element signature="e#2164#2228#0" expanded="false" />
+            <element signature="e#3596#4183#0" expanded="false" />
+            <element signature="e#3784#3994#0" expanded="false" />
+            <element signature="e#4032#4164#0" expanded="false" />
+            <element signature="e#4416#5039#0" expanded="false" />
+            <element signature="e#4587#4827#0" expanded="false" />
+            <element signature="e#4867#5015#0" expanded="false" />
           </folding>
         </state>
       </provider>
