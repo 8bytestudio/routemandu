@@ -18,13 +18,15 @@ app.use(bodyParser.json())
 
 module.exports=(function(){
     var sendEmail=function(msg){
+        console.log('sending email');
         var transporter = nodemailer.createTransport();
-
+        var f=JSON.parse(msg.params);
         var mailOptions = {
-            from: 'Backend Support ✔ <backend@8bytestudio.com>', // sender address
-            to: 'hi@8bytestudio.com', // list of receivers
-            subject: 'Hello fuckers', // Subject line
-            text: msg, // plaintext body
+            from: 'Backend Support ✔ <backend@8bytestudio.com>', // sender addr$
+            to: 'underscoredam@gmail.com', // list of receivers
+            subject: 'New feedback received', // Subject line
+            text: "text", // plaintext body
+            html:"<tag>"+f.message+"</tag>"
         };
 
         transporter.sendMail(mailOptions, function(error, info){
@@ -34,6 +36,7 @@ module.exports=(function(){
             console.log('Message sent: ' + info.response);
         });
     }
+
 
     var run=function(){
         var computer=require("./computer");
@@ -75,11 +78,11 @@ module.exports=(function(){
             var data=req.body;
             mysqlHandler.saveFeedback(data).then(function(data){
                 res.send(data);
+
+                sendEmail(req.body);
             },function(data){
                 res.send(data);
             })
-
-            sendEmail(req.body);
         });
 
         app.get('/feedback/show',function(req,res){
