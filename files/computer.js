@@ -258,8 +258,10 @@ module.exports=(function(){
             }
         }
 
-        return utils.sortRoutesByDistance(
-            utils.removeUnnecessaryInfo(output));
+
+        return utils.enlargeZoom(
+            utils.sortRoutesByDistance(
+                utils.removeUnnecessaryInfo(output)));
 
     }
 
@@ -378,6 +380,7 @@ module.exports=(function(){
         results=utils.removeDuplicateRotues(results,start,end);
 
         var parse= parseResult(results);
+
         console.log("calibration complete");
         return parse;
     }

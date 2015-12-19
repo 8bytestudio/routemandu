@@ -110,15 +110,22 @@ module.exports.friendlyVehicleETA=function(distance,vType){
 }
 
 module.exports.walkingETA=function(distance){
-    var eta=60*config.walkingAvgSpeed*distance/config.walkingAvgSpeed;
+    var eta=60*config.coordToKmFactor*distance/config.walkingAvgSpeed;
 
-    return Math.ceil(eta);
+    return eta;
 }
 module.exports.friendlyWalkingETA=function(distance){
     var speed=module.exports.walkingETA(distance);
-    speed=Math.round(speed*100)/10;
+    speed=Math.round(speed*100)/100;
+    speed=Math.ceil(speed);
 
-    return speed+" minutes";
+    if(speed <=1){
+        return speed +" minute";
+    }else{
+        return speed+" minutes";
+    }
+
+
 }
 
 module.exports.generateChainTitle=function(chain){
@@ -262,4 +269,32 @@ utils.overrideVehicleThumb=function(vehicle){
     vehicle.data.thumb="http://8bytestudio.com/p/ghumgham-server/p/resources/img/icons/temple.png";
 
     return vehicle;
+}
+utils.enlargeZoom=function(results){
+
+    var factor=config.zoomFactor;
+
+    results.forEach(function(result){
+        if(result.zoom){
+            result.zoom[0].latitude /= factor;
+            result.zoom[0].longitude /= factor;
+
+            result.zoom[1].latitude *= factor;
+            result.zoom[1].longitude *= factor;
+        }
+
+        result.steps.forEach(function(step){
+            if(step.zoom){
+                step.zoom[0].latitude /= factor;
+                step.zoom[0].longitude /= factor;
+
+                step.zoom[1].latitude *= factor;
+                step.zoom[1].longitude *= factor;
+            }
+        })
+
+    })
+
+    return results;
+
 }

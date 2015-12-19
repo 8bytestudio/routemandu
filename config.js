@@ -25,6 +25,8 @@ module.exports={
 
     routemaxlength:200,
 
+    zoomFactor:1.002,
+
     //id from mysql vehicleTypes table
     ID_SMALL_MICRO:1,
     ID_BUS:3,
