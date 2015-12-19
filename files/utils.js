@@ -116,7 +116,6 @@ module.exports.walkingETA=function(distance){
 }
 module.exports.friendlyWalkingETA=function(distance){
     var speed=module.exports.walkingETA(distance);
-    console.log(speed);
     speed=Math.round(speed*100)/10;
 
     return speed+" minutes";
@@ -214,14 +213,12 @@ utils.removeDuplicateRotues=function(results,start,end){
             for(var i=0;i<route.first.length;i++){
 
                 if(route.first[i].goesThroughLocations(end) || route.first[i].goesThroughLocations(route.secondInterval)){
-//                    console.log("YES");
                     return;
                 }
             }
 
             for(var i=0;i<route.third.length;i++){
                 if(route.third[i].goesThroughLocations(start) || route.third[i].goesThroughLocations(route.firstInterval)){
-//                    console.log("YES1");
                     return;
                 }
             }
@@ -260,4 +257,9 @@ utils.removeUnnecessaryInfo=function(result){
     })
     return result;
 
+}
+utils.overrideVehicleThumb=function(vehicle){
+    vehicle.data.thumb="http://8bytestudio.com/p/ghumgham-server/p/resources/img/icons/temple.png";
+
+    return vehicle;
 }

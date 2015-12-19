@@ -88,6 +88,8 @@ module.exports=(function(){
                     data.vehicles[x].vType);
 
                 data.vehicles[x].direction= _.last(data.locations).name+" on "+data.vehicles[x].name;
+
+                utils.overrideVehicleThumb(data.vehicles[x]);
             }
 
             ret.push(data);
@@ -101,8 +103,8 @@ module.exports=(function(){
         if(chain[0].locations.length<1)return;
         if(_.last(chain).locations.length<1)return;
 
-        var distance=utils.distanceBetween(realStart,chain[0].locations[0]);
-        console.log(distance, "is distance",utils.calculateDistanceFriendly(realStart,chain[0].locations[0]));
+//        var distance=utils.distanceBetween(realStart,chain[0].locations[0]);
+//        console.log(distance, "is distance",utils.calculateDistanceFriendly(realStart,chain[0].locations[0]));
 
         var initial={
             "type":"walking",
