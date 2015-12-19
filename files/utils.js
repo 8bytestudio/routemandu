@@ -266,7 +266,10 @@ utils.removeUnnecessaryInfo=function(result){
 
 }
 utils.overrideVehicleThumb=function(vehicle){
-    vehicle.data.thumb="http://8bytestudio.com/p/ghumgham-server/p/resources/img/icons/temple.png";
+    var type=vehicle.vType;
+    type=type.toLowerCase();
+
+    vehicle.data.thumb="http://8bytestudio.com/p/ghumgham-server/p/resources/img/icons/vehicles/"+type+".jpg";
 
     return vehicle;
 }
