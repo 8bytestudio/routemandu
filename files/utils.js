@@ -25,15 +25,15 @@ module.exports.calculateDistance=function(array){
     for(var i=0;i<array.length-1;i++){
         var routeDistance = module.exports.distanceBetween(array[i],array[i+1]);
         distance += routeDistance;
-
     }
+
     return distance*config.coordToKmFactor;
 }
 module.exports.calculateDistanceFriendly=function(){
 
-    if(arguments.length ==1){
+    if(arguments.length ==1){//if the item itself is an array,
         return Math.round(module.exports.calculateDistance(arguments[0])*1000)/1000+" km";
-    }else{
+    }else{//else the parameters are passed as functions
         return Math.round(module.exports.calculateDistance(arguments)*1000)/1000+" km";
     }
 
@@ -110,14 +110,14 @@ module.exports.friendlyVehicleETA=function(distance,vType){
 }
 
 module.exports.walkingETA=function(distance){
-    var eta=distance/config.walkingAvgSpeed;
+    var eta=60*config.walkingAvgSpeed*distance/config.walkingAvgSpeed;
 
     return Math.ceil(eta);
 }
 module.exports.friendlyWalkingETA=function(distance){
     var speed=module.exports.walkingETA(distance);
-
-    speed=Math.round(speed*100,2)/100;
+    console.log(speed);
+    speed=Math.round(speed*100)/10;
 
     return speed+" minutes";
 }
@@ -195,8 +195,6 @@ module.exports.getUniqueIntersects=function(start,end,intersects){
 }
 
 utils.removeDuplicateRotues=function(results,start,end){
-    console.log("call");
-
     var ret=[];
 
     results.forEach(function(route){

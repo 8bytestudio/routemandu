@@ -25,7 +25,6 @@ module.exports=(function(){
     }
 
     var getParsingChainItem=function(routes,from,to){
-
         if(! from) from=start;
         if(! to)to=end;
         var bundle=[];
@@ -101,6 +100,9 @@ module.exports=(function(){
         if(chain.length<1)return;
         if(chain[0].locations.length<1)return;
         if(_.last(chain).locations.length<1)return;
+
+        var distance=utils.distanceBetween(realStart,chain[0].locations[0]);
+        console.log(distance, "is distance",utils.calculateDistanceFriendly(realStart,chain[0].locations[0]));
 
         var initial={
             "type":"walking",
@@ -373,7 +375,6 @@ module.exports=(function(){
 
         results=utils.removeDuplicateRotues(results,start,end);
 
-        console.log(results);
         var parse= parseResult(results);
         console.log("calibration complete");
         return parse;

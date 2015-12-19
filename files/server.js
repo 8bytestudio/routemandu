@@ -67,8 +67,6 @@ module.exports=(function(){
                 if(err){
                     return console.log(err);
                 }
-
-                console.log("success");
             })
 
             res.send(result);
